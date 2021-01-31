@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "om/jyTR+0dsIheftCbzSArfMKtWnfIsvdCPwZiZO2csXlMmk+aR2iAIGhHtrycnPlWXQLx9w8eiS1n41WC3FsA==",
+  "success": true,
+  "projectFilePath": "/Users/mohammadsadra/Projects/OnlineStockShop/OnlineStockShop/OnlineStockShop/OnlineStockShop.csproj",
+  "expectedPackageFiles": [
+    "/Users/mohammadsadra/.nuget/packages/microsoft.aspnetcore.app.ref/3.1.10/microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512"
+  ],
+  "logs": []
+}

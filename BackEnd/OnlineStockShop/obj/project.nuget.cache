@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "om/jyTR+0dsIheftCbzSArfMKtWnfIsvdCPwZiZO2csXlMmk+aR2iAIGhHtrycnPlWXQLx9w8eiS1n41WC3FsA==",
+  "dgSpecHash": "NgfKpj2DKOEnjxNsEYQjGNifJqmg8MWYtqBXefRPZ3r/QUZOz/BZt3KFPyc38d221b/UyWOAqFVeBUDLJc6Wlw==",
   "success": true,
-  "projectFilePath": "/Users/mohammadsadra/Projects/OnlineStockShop/OnlineStockShop/OnlineStockShop/OnlineStockShop.csproj",
-  "expectedPackageFiles": [
-    "/Users/mohammadsadra/.nuget/packages/microsoft.aspnetcore.app.ref/3.1.10/microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512"
-  ],
+  "projectFilePath": "F:\\Term 5\\Software Engineering 1\\Project\\Code\\OnlineStockShop\\BackEnd\\OnlineStockShop\\OnlineStockShop.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

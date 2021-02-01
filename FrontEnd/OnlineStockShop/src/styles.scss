@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  src: url("assets/Fonts/ANJOMAN-THIN.TTF");
+  font-family: 'primaryFont';
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+div{
+  font-family: primaryFont;
+  font-weight: 900;
+}
+.hover-header:hover{
+  background-color: #1d2129;
+}

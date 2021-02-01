@@ -7,13 +7,15 @@ import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import {ModalModule} from 'ngx-bootstrap/modal';
 import {HomeComponent} from './Pages/home/home.component';
+import { AdvertismentsComponent } from './Pages/advertisments/advertisments.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    AdvertismentsComponent
   ],
   imports: [
     BrowserModule,

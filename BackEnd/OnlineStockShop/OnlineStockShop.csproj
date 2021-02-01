@@ -4,5 +4,11 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Domain\Advertisment\" />
+    <Folder Include="Domain\Category\" />
+    <Folder Include="Domain\Report\" />
+  </ItemGroup>
+
 
 </Project>

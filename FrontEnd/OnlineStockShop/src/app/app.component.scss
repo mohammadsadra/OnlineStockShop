@@ -1,0 +1,22 @@
+.header_container{
+  z-index: 1000;
+  position: fixed;
+  width: 100%;
+}
+.header_row{
+  z-index: 500;
+  background-color: gray;
+  height: 70px;
+  direction:rtl;
+  font-size: 20px;
+  text-align: center;
+  color: whitesmoke;
+  cursor: pointer;
+}
+.header_col{
+  margin-right: 10px;
+  padding-top: 20px
+}
+.header_col:hover{
+  background-color: #171c1f;
+}

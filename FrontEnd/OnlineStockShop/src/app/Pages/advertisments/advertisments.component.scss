@@ -38,7 +38,7 @@ body::after {
 }
 
 .container {
-  margin-top: 100px;
+  margin-top: 70px;
   position: fixed;
   display: flex;
   top: 0;
@@ -77,9 +77,10 @@ body::after {
   transition: 0.5s;
 }
 .backOfCard{
-  font-size: 8em;
+  font-size: 7em;
   color: #fff;
   z-index: 1;
+  margin-top: 5px;
 }
 .container .backOfCard{
   transform: translateY(0px);
@@ -87,7 +88,7 @@ body::after {
   transition: 0.5s;
 }
 .container .card:hover .backOfCard{
-  transform: translateY(100px);
+  transform: translateY(-100px);
   opacity: 0;
 }
 
@@ -127,4 +128,7 @@ body::after {
   border-radius: 20px;
   font-weight: 500;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2 );
+}
+.container .card .content a:hover{
+  color: #7436f3;
 }

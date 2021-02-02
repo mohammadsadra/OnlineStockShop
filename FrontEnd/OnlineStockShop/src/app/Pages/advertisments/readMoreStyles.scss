@@ -1,7 +1,7 @@
 *{
   font-family: primaryFont !important;
   font-weight: 500;
-
+  direction: rtl;
 }
 body {
   display: flex;
@@ -23,6 +23,7 @@ body {
   border-radius: 15px;
   background: rgba(255, 255, 255, 0.1);
   overflow-y: scroll;
+  overflow-x: hidden;
   display: flex;
   justify-content: center;
   border-top: 1px solid rgba(255, 255, 255, 0.5);
@@ -55,12 +56,17 @@ body {
 }
 .user_img{
   width: 480px;
+  min-height: 400px;
   border:1.5px solid #f5f6fa;
-  opacity: 1;
-  margin-top: 5px;
 }
 .card .content .description{
   font-size: 1em;
   color: #fff;
   font-weight: 300;
+}
+.simpleLine{
+  height:2px;
+  border-width:0;
+  color:gray;
+  background-color:gray;
 }

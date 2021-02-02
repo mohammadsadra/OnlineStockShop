@@ -6,36 +6,54 @@
     <img [src]="adData.pictureLink" class="user_img" *ngIf="adData.pictureLink != null">
     <img src="https://cdn.yjc.ir/files/fa/news/1399/2/28/11910423_221.jpg" class="user_img" *ngIf="adData.pictureLink == null">
     <div class="content">
-      <h2>
-        01
-      </h2>
+
       <h3>
-        عنوان
+        {{this.adData.title}}
       </h3>
+
+      <hr class="simpleLine">
+
+      <h3 style="color: darkolivegreen">
+        {{this.adData.category}}
+      </h3>
+      <hr class="simpleLine">
+
       <p>
         <span>{{this.adData.city}} / </span>
         <span>{{this.adData.region}}</span>
       </p>
+
+      <hr class="simpleLine">
+
       <div *ngFor="let line of this.adData.description.split('\n')" class="description">
         {{line}}
         <div *ngIf="line == '' ">
           <br>
         </div>
       </div>
+
+      <hr class="simpleLine">
+
       <p>
-        :آدرس
+        آدرس:
         <br>
         {{this.adData.address}}
       </p>
+
+      <hr class="simpleLine">
+
       <p>
-        :تماس
+        تماس:
         <br>
         {{this.adData.phoneNumber}}
       </p>
+
+      <hr class="simpleLine">
+
       <p>
-        :صاحب آگهی
+        صاحب آگهی:
         <br>
-        {{this.adData.creatorId}}
+        {{this.adData.creator}}
       </p>
 
     </div>

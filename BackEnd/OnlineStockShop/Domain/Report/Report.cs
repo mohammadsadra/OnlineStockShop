@@ -11,7 +11,7 @@ namespace OnlineStockShop.Domain.Report
 
         public byte Id { get; set; }
         public string Description { get; set; }
-        public string title { get; set; }
+        public string Title { get; set; }
 
 
         public byte AdvertismentId { get; set; }

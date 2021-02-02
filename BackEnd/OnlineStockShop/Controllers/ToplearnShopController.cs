@@ -34,6 +34,7 @@ namespace OnlineStockShop.Controllers
                 Region = ad.Region,
                 Address = ad.Address,
                 PhoneNumber = ad.PhoneNumber,
+                PictureLink =ad.PictureLink,
                 Description = ad.Description,
                 Creator = ad.User.LastName,
                 Category = ad.Category.CategoryName,
@@ -46,25 +47,25 @@ namespace OnlineStockShop.Controllers
 
         [HttpGet]
         [Route("GetAdvertismentByCategory")]
-        //public IActionResult GetAdvertismentByCategory(int categoryId)
-        //{
+        public IActionResult GetAdvertismentByCategory(int categoryId)
+        {
 
-        //    List<AdvertisementModel> Mylist = _db.Advertisements.Where(adv => adv.CategoryId == categoryId).Select(ad => new AdvertisementModel
-        //    {
-        //        Title = ad.Title,
-        //        City = ad.City,
-        //        Region = ad.Region,
-        //        Address = ad.Address,
-        //        PhoneNumber = ad.PhoneNumber,
-        //        Description = ad.Description,
-        //        CreatorId = ad.UserId,
-        //        CategoryId = ad.CategoryId,
-        //        CreationTime = ad.CreationDate,
-        //        ExpireTime = ad.ExpireDate
+            List<AdvertisementModel> Mylist = _db.Advertisements.Where(adv => adv.CategoryId == categoryId).Select(ad => new AdvertisementModel
+            {
+                Title = ad.Title,
+                City = ad.City,
+                Region = ad.Region,
+                Address = ad.Address,
+                PhoneNumber = ad.PhoneNumber,
+                Description = ad.Description,
+                Creator = ad.User.LastName,
+                Category = ad.Category.CategoryName,
+                CreationTime = ad.CreationDate,
+                ExpireTime = ad.ExpireDate
 
-        //    }).ToList();
-        //    return Ok(Mylist);
-        //}
+            }).ToList();
+            return Ok(Mylist);
+        }
 
         [HttpPost]
         [Route("createAdvertisment")]

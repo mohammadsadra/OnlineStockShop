@@ -18,6 +18,7 @@ namespace OnlineStockShop.Domain.Context
         public DbSet<Category.Category> Categories { get; set; }
         public DbSet<Advertisement> Advertisements { get; set; }
         public DbSet<Report.Report> Reports { get; set; }
+        public DbSet<User.User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

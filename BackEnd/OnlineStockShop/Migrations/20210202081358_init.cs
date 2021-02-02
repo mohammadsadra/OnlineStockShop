@@ -20,6 +20,21 @@ namespace OnlineStockShop.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<byte>(type: "tinyint", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Advertisements",
                 columns: table => new
                 {
@@ -30,7 +45,7 @@ namespace OnlineStockShop.Migrations
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatorId = table.Column<byte>(type: "tinyint", nullable: false),
+                    UserId = table.Column<byte>(type: "tinyint", nullable: false),
                     CategoryId = table.Column<byte>(type: "tinyint", nullable: false),
                     PictureLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -44,6 +59,12 @@ namespace OnlineStockShop.Migrations
                         name: "FK_Advertisements_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Advertisements_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -74,6 +95,11 @@ namespace OnlineStockShop.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Advertisements_UserId",
+                table: "Advertisements",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Reports_AdvertismentId",
                 table: "Reports",
                 column: "AdvertismentId");
@@ -89,6 +115,9 @@ namespace OnlineStockShop.Migrations
 
             migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }

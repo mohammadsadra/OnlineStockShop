@@ -10,7 +10,7 @@ using OnlineStockShop.Domain.Context;
 namespace OnlineStockShop.Migrations
 {
     [DbContext(typeof(OnlineStockShopDbContext))]
-    [Migration("20210202075524_init")]
+    [Migration("20210202081358_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,9 +38,6 @@ namespace OnlineStockShop.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<byte>("CreatorId")
-                        .HasColumnType("tinyint");
-
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -62,9 +59,14 @@ namespace OnlineStockShop.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<byte>("UserId")
+                        .HasColumnType("tinyint");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Advertisements");
                 });
@@ -103,6 +105,28 @@ namespace OnlineStockShop.Migrations
                     b.ToTable("Reports");
                 });
 
+            modelBuilder.Entity("OnlineStockShop.Domain.User.User", b =>
+                {
+                    b.Property<byte>("Id")
+                        .HasColumnType("tinyint");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("OnlineStockShop.Domain.Advertisment.Advertisement", b =>
                 {
                     b.HasOne("OnlineStockShop.Domain.Category.Category", "Category")
@@ -111,7 +135,15 @@ namespace OnlineStockShop.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("OnlineStockShop.Domain.User.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Category");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("OnlineStockShop.Domain.Report.Report", b =>

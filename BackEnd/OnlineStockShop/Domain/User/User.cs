@@ -26,7 +26,6 @@ namespace OnlineStockShop.Domain.User
         #endregion
 
         #region Relations
-        //public ICollection<Advertisment> Users { get; set; }
         #endregion
 
 

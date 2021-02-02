@@ -25,7 +25,7 @@ namespace OnlineStockShop.Domain.Advertisment
 
         public string Description { get; set; }
 
-        public byte CreatorId { get; set; }
+        public byte UserId { get; set; }
 
         public byte CategoryId { get; set; }
 
@@ -42,6 +42,7 @@ namespace OnlineStockShop.Domain.Advertisment
 
         #region Relations
         public virtual Category.Category Category { get; set; }
+        public virtual User.User User { get; set; }
         #endregion
     }
 }

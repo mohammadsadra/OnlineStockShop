@@ -10,7 +10,7 @@ export class AdvertismentService {
   constructor(private http: HttpClient) {
   }
 
-  getAdvertisment(): Observable<any> {
-    return this.http.get('https://localhost:44365/ToplearnShop/GetAdvertisment');
+  getAdvertisment(): Observable<Array<any>> {
+    return this.http.get<Array<any>>('https://localhost:44365/ToplearnShop/GetAdvertisment');
   }
 }

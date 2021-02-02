@@ -11,7 +11,7 @@ import {AdvertismentService} from 'src/app/Services/advertisment/advertisment.se
   styleUrls: ['./advertisments.component.scss']
 })
 export class AdvertismentsComponent implements OnInit {
-  AdsList = [];
+  public result: Array<any> = [];
 
   constructor(public dialog: MatDialog,
               // tslint:disable-next-line:no-shadowed-variable
@@ -22,12 +22,13 @@ export class AdvertismentsComponent implements OnInit {
     this.getAds();
   }
 
-  // tslint:disable-next-line:typedef
-  openDialog() {
+  openDialog(ad: Array<any>): void {
     const dialogRef = this.dialog.open(DialogContentExampleDialog, {
       minWidth: '600px',
       minHeight: '400px',
-      data: {},
+      data: {
+        dataKey: ad
+      },
       // backdropClass: 'backdropBackground',
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -38,15 +39,17 @@ export class AdvertismentsComponent implements OnInit {
 
   getAds(): void {
     this.AdvertismentService.getAdvertisment().subscribe(res => {
-      console.log(res);
-      const tmp = res;
-      this.AdsList =  tmp;
+      // let tmp = [];
+      // tslint:disable-next-line:only-arrow-functions typedef
+      // res.forEach(function(value) {
+      //   tmp.push(value);
+      // });
       // tslint:disable-next-line:prefer-for-of
-      // for (let a = 0; a < tmp.length; a++) {
-      //   this.AdsList.push(tmp[a]);
+      // for (let a = 0; a < res.length; a++) {
+      //   this.AdsList.push(res[a]);
       // }
+      this.result = res;
     });
-    console.log(this.AdsList);
   }
 
 
@@ -61,16 +64,13 @@ export class AdvertismentsComponent implements OnInit {
 
 // tslint:disable-next-line:component-class-suffix
 export class DialogContentExampleDialog implements OnInit {
-  teamData;
-  thisTeamLinks = [];
-  newLinks = [];
-  isNewLinkAvailable = false;
+  adData;
 
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
               // tslint:disable-next-line:variable-name
               private _snackBar: MatSnackBar) {
-    this.teamData = this.data.dataKey;
+    this.adData = this.data.dataKey;
   }
 
   ngOnInit(): void {

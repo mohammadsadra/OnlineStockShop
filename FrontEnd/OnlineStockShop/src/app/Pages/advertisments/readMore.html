@@ -3,7 +3,8 @@
 <div >
 
   <div class="card">
-    <img src="https://img9.irna.ir/old/Image/1393/13930415/81226841/81226841-5807419.jpg" class="user_img">
+    <img [src]="adData.pictureLink" class="user_img" *ngIf="adData.pictureLink != null">
+    <img src="https://cdn.yjc.ir/files/fa/news/1399/2/28/11910423_221.jpg" class="user_img" *ngIf="adData.pictureLink == null">
     <div class="content">
       <h2>
         01
@@ -12,31 +13,29 @@
         عنوان
       </h3>
       <p>
-        <span>تهران / </span>
-        <span>پاسداران</span>
+        <span>{{this.adData.city}} / </span>
+        <span>{{this.adData.region}}</span>
       </p>
-      <p>
-        کارکرده
-      </p>
-      <p>
-        کمیسیون مشترک به منظور بحث در مورد مسیر پیش رو برای حصول اطمینان از اجرای مستمر توافق هسته ای در تمامی ابعاد آن و بررسی مسائل حل نشده
-        ناشی از خروج یکجانبه آمریکا از این توافق و وضع مجدد تحریم هایی که وفق برجام و پیوست شماره دو
-        آن رفع شده بود؛
-      </p>
+      <div *ngFor="let line of this.adData.description.split('\n')" class="description">
+        {{line}}
+        <div *ngIf="line == '' ">
+          <br>
+        </div>
+      </div>
       <p>
         :آدرس
         <br>
-        تهران منطقه ۱۱ استان تهران، خيابان حافظ،پاساژ، بزرگ علاءالدین
+        {{this.adData.address}}
       </p>
       <p>
         :تماس
         <br>
-        ۰۹۱۲۷۹۵۹۲۱۱
+        {{this.adData.phoneNumber}}
       </p>
       <p>
         :صاحب آگهی
         <br>
-        محمدصدرا حائری
+        {{this.adData.creatorId}}
       </p>
 
     </div>

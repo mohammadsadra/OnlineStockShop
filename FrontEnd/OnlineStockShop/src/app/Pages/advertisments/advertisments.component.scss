@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: primaryFont !important;
 }
 
 body {
@@ -153,4 +154,9 @@ body::after {
 .fadeIn {
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
+}
+.container .card .content .description{
+  font-size: 1em;
+  color: #fff;
+  font-weight: 300;
 }

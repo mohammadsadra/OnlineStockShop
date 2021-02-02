@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OnlineStockShop.Domain.Advertisment;
 using OnlineStockShop.Domain.Context;
 using OnlineStockShop.Models;
 
@@ -69,25 +70,26 @@ namespace OnlineStockShop.Controllers
 
         [HttpPost]
         [Route("createAdvertisment")]
-        public IActionResult createAdvertisment([FromBody] AdvertisementModel model)
+        public IActionResult createAdvertisment([FromBody] Advertisement model)
         {
 
-            //DateTime creationTime = DateTime.Now;
+            DateTime creationTime = DateTime.Now;
 
-            //var newAd = new AdvertisementModel()
-            //{
-            //    Title = model.Title,
-            //    City = model.City,
-            //    Region = model.Region,
-            //    Address = model.Address,
-            //    PhoneNumber = model.PhoneNumber,
-            //    Description = model.Description,
-            //    CreatorId = model.CreatorId,
-            //    CategoryId = model.CategoryId,
-            //    CreationTime = creationTime,
-            //    ExpireTime = model.ExpireTime
-            //};
-            //_db.Advertisements.Add(newAd);
+            var newAd = new Advertisement
+            {
+                Title = model.Title,
+                City = model.City,
+                Region = model.Region,
+                Address = model.Address,
+                PhoneNumber = model.PhoneNumber,
+                PictureLink = model.PictureLink,
+                Description = model.Description,
+                UserId = model.UserId,
+                CategoryId = model.CategoryId,
+                CreationDate = creationTime,
+                ExpireDate = model.ExpireDate
+            };
+            _db.Advertisements.Add(newAd);
 
             return Ok("ok");
         }

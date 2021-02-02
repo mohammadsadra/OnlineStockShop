@@ -71,22 +71,22 @@ namespace OnlineStockShop.Controllers
         public IActionResult createAdvertisment([FromBody] AdvertisementModel model)
         {
 
-            DateTime creationTime = DateTime.Now;
+            //DateTime creationTime = DateTime.Now;
 
-            var newAd = new AdvertisementModel()
-            {
-                Title = model.Title,
-                City = model.City,
-                Region = model.Region,
-                Address = model.Address,
-                PhoneNumber = model.PhoneNumber,
-                Description = model.Description,
-                CreatorId = model.CreatorId,
-                CategoryId = model.CategoryId,
-                CreationTime = creationTime,
-                ExpireTime = model.ExpireTime
-            };
-            _db.Advertisements.Add(newAd);
+            //var newAd = new AdvertisementModel()
+            //{
+            //    Title = model.Title,
+            //    City = model.City,
+            //    Region = model.Region,
+            //    Address = model.Address,
+            //    PhoneNumber = model.PhoneNumber,
+            //    Description = model.Description,
+            //    CreatorId = model.CreatorId,
+            //    CategoryId = model.CategoryId,
+            //    CreationTime = creationTime,
+            //    ExpireTime = model.ExpireTime
+            //};
+            //_db.Advertisements.Add(newAd);
 
             return Ok("ok");
         }

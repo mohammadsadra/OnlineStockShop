@@ -7,7 +7,10 @@ import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import {ModalModule} from 'ngx-bootstrap/modal';
 import {HomeComponent} from './Pages/home/home.component';
-import { AdvertismentsComponent } from './Pages/advertisments/advertisments.component';
+import {AdvertismentsComponent, DialogContentExampleDialog} from './Pages/advertisments/advertisments.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 
 
@@ -15,7 +18,8 @@ import { AdvertismentsComponent } from './Pages/advertisments/advertisments.comp
   declarations: [
     AppComponent,
     HomeComponent,
-    AdvertismentsComponent
+    AdvertismentsComponent,
+    DialogContentExampleDialog
   ],
   imports: [
     BrowserModule,
@@ -24,7 +28,9 @@ import { AdvertismentsComponent } from './Pages/advertisments/advertisments.comp
     BrowserModule,
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

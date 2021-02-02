@@ -10,6 +10,7 @@ import {HomeComponent} from './Pages/home/home.component';
 import {AdvertismentsComponent, DialogContentExampleDialog} from './Pages/advertisments/advertisments.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
+import {HttpClientModule} from '@angular/common/http';
 
 
 
@@ -30,7 +31,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

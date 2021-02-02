@@ -2,6 +2,7 @@ import {Inject} from '@angular/core';
 import {Component, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {AdvertismentService} from 'src/app/Services/advertisment/advertisment.service';
 
 
 @Component({
@@ -10,11 +11,15 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   styleUrls: ['./advertisments.component.scss']
 })
 export class AdvertismentsComponent implements OnInit {
+  AdsList = [];
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog,
+              // tslint:disable-next-line:no-shadowed-variable
+              private AdvertismentService: AdvertismentService) {
   }
 
   ngOnInit(): void {
+    this.getAds();
   }
 
   // tslint:disable-next-line:typedef
@@ -29,6 +34,21 @@ export class AdvertismentsComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
+
+
+  getAds(): void {
+    this.AdvertismentService.getAdvertisment().subscribe(res => {
+      console.log(res);
+      const tmp = res;
+      this.AdsList =  tmp;
+      // tslint:disable-next-line:prefer-for-of
+      // for (let a = 0; a < tmp.length; a++) {
+      //   this.AdsList.push(tmp[a]);
+      // }
+    });
+    console.log(this.AdsList);
+  }
+
 
 }
 

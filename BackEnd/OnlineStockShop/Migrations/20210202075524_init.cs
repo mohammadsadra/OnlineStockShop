@@ -48,14 +48,42 @@ namespace OnlineStockShop.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Reports",
+                columns: table => new
+                {
+                    Id = table.Column<byte>(type: "tinyint", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AdvertismentId = table.Column<byte>(type: "tinyint", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reports", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Reports_Advertisements_AdvertismentId",
+                        column: x => x.AdvertismentId,
+                        principalTable: "Advertisements",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Advertisements_CategoryId",
                 table: "Advertisements",
                 column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reports_AdvertismentId",
+                table: "Reports",
+                column: "AdvertismentId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Reports");
+
             migrationBuilder.DropTable(
                 name: "Advertisements");
 

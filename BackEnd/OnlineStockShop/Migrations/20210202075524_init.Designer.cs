@@ -10,7 +10,7 @@ using OnlineStockShop.Domain.Context;
 namespace OnlineStockShop.Migrations
 {
     [DbContext(typeof(OnlineStockShopDbContext))]
-    [Migration("20210202073508_init")]
+    [Migration("20210202075524_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -82,6 +82,27 @@ namespace OnlineStockShop.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("OnlineStockShop.Domain.Report.Report", b =>
+                {
+                    b.Property<byte>("Id")
+                        .HasColumnType("tinyint");
+
+                    b.Property<byte>("AdvertismentId")
+                        .HasColumnType("tinyint");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AdvertismentId");
+
+                    b.ToTable("Reports");
+                });
+
             modelBuilder.Entity("OnlineStockShop.Domain.Advertisment.Advertisement", b =>
                 {
                     b.HasOne("OnlineStockShop.Domain.Category.Category", "Category")
@@ -91,6 +112,17 @@ namespace OnlineStockShop.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("OnlineStockShop.Domain.Report.Report", b =>
+                {
+                    b.HasOne("OnlineStockShop.Domain.Advertisment.Advertisement", "Advertisment")
+                        .WithMany()
+                        .HasForeignKey("AdvertismentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Advertisment");
                 });
 
             modelBuilder.Entity("OnlineStockShop.Domain.Category.Category", b =>

@@ -1,5 +1,4 @@
 * {
-  font-family: primaryFont !important;
   color: rgb(29, 131, 167);
   background-color: #161623;
   margin: 0;
@@ -41,11 +40,13 @@ body::after {
 }
 
 h1 {
+  font-family: primaryBoldFont;
   font-size: 4em;
   padding-top: 10%;
 }
 
 h2 {
+  font-family: primaryFont;
   color: white;
   font-size: 2em;
   margin: 20px 0;
@@ -65,12 +66,17 @@ h2 {
 .username {
   color: white;
   padding-left: 10px;
+  transition: 0.5s color;
+}
+
+.username:hover{
+  color: gray;
 }
 
 .footer {
   position: fixed;
-  left:0px;
-  bottom:0px;
+  left:0;
+  bottom:0;
   height:30px;
   width:100%;
 }

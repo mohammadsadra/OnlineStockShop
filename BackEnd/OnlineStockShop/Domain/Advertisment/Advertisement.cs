@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using 
+using OnlineStockShop.Domain.Category;
 
 namespace OnlineStockShop.Domain.Advertisment
 {
@@ -41,7 +41,7 @@ namespace OnlineStockShop.Domain.Advertisment
         #endregion
 
         #region Relations
-        //public virtual Category Category { get; set; }
+        public virtual Category.Category Category { get; set; }
         #endregion
     }
 }

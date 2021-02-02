@@ -70,33 +70,25 @@ namespace OnlineStockShop.Controllers
 
         [HttpPost]
         [Route("createAdvertisment")]
-        public IActionResult createAdvertisment([FromBody] Advertisement model)
+        public IActionResult createAdvertisment([FromBody] Advertisement advertisement)
         {
-
-            DateTime creationTime = DateTime.Now;
-
-            var newAd = new Advertisement
+            _db.Advertisements.Add(new Advertisement
             {
-                Title = model.Title,
-                City = model.City,
-                Region = model.Region,
-                Address = model.Address,
-                PhoneNumber = model.PhoneNumber,
-                PictureLink = model.PictureLink,
-                Description = model.Description,
-                UserId = model.UserId,
-                CategoryId = model.CategoryId,
-                CreationDate = creationTime,
-                ExpireDate = model.ExpireDate
-            };
-            _db.Advertisements.Add(newAd);
-
+                Id = advertisement.Id,
+                Title = advertisement.Title,
+                City = advertisement.City,
+                Region = advertisement.Region,
+                Address = advertisement.Address,
+                PhoneNumber = advertisement.PhoneNumber,
+                PictureLink = advertisement.PictureLink,
+                Description = advertisement.Description,
+                UserId = advertisement.UserId,
+                CategoryId = advertisement.CategoryId,
+                CreationDate = DateTime.Now,
+                ExpireDate = advertisement.ExpireDate
+            });
+            _db.SaveChanges();
             return Ok("ok");
         }
-
-
-
-
-
     }
 }

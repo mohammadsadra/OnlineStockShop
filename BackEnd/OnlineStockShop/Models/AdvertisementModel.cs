@@ -22,9 +22,9 @@ namespace OnlineStockShop.Models
 
         public string Description { get; set; }
 
-        public byte CreatorId { get; set; }
+        public string Creator { get; set; }
 
-        public byte CategoryId { get; set; }
+        public string Category { get; set; }
 
         public DateTime CreationTime { get; set; }
 

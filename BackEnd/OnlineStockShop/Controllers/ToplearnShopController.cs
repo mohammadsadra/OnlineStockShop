@@ -35,8 +35,8 @@ namespace OnlineStockShop.Controllers
                 Address = ad.Address,
                 PhoneNumber = ad.PhoneNumber,
                 Description = ad.Description,
-                CreatorId = ad.UserId,
-                CategoryId = ad.CategoryId,
+                Creator = ad.User.LastName,
+                Category = ad.Category.CategoryName,
                 CreationTime = ad.CreationDate,
                 ExpireTime = ad.ExpireDate
 
@@ -49,7 +49,7 @@ namespace OnlineStockShop.Controllers
         public IActionResult GetAdvertismentByCategory(int categoryId)
         {
 
-            List<AdvertisementModel> Mylist = _db.Advertisements.Where(adv=>adv.CategoryId==categoryId).Select(ad => new AdvertisementModel
+            List<AdvertisementModel> Mylist = _db.Advertisements.Where(adv => adv.CategoryId == categoryId).Select(ad => new AdvertisementModel
             {
                 Title = ad.Title,
                 City = ad.City,
@@ -64,6 +64,31 @@ namespace OnlineStockShop.Controllers
 
             }).ToList();
             return Ok(Mylist);
+        }
+
+        [HttpPost]
+        [Route("createAdvertisment")]
+        public IActionResult createAdvertisment([FromBody] AdvertisementModel model)
+        {
+
+            DateTime creationTime = DateTime.Now;
+
+            var newAd = new AdvertisementModel()
+            {
+                Title = model.Title,
+                City = model.City,
+                Region = model.Region,
+                Address = model.Address,
+                PhoneNumber = model.PhoneNumber,
+                Description = model.Description,
+                CreatorId = model.CreatorId,
+                CategoryId = model.CategoryId,
+                CreationTime = creationTime,
+                ExpireTime = model.ExpireTime
+            };
+            _db.Advertisements.Add(newAd);
+
+            return Ok("ok");
         }
 
 

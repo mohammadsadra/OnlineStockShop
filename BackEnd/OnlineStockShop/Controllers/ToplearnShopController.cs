@@ -26,8 +26,8 @@ namespace OnlineStockShop.Controllers
         [Route("GetAdvertisment")]
         public IActionResult GetAdvertisements()
         {
-            List<AdvertisementModel> Mylist =
-            _db.Advertisements.Select(ad => new AdvertisementModel
+
+            List<AdvertisementModel> Mylist = _db.Advertisements.Select(ad => new AdvertisementModel
             {
                 Title = ad.Title,
                 City = ad.City,
@@ -43,6 +43,30 @@ namespace OnlineStockShop.Controllers
             }).ToList();
             return Ok(Mylist);
         }
+
+        [HttpGet]
+        [Route("GetAdvertismentByCategory")]
+        public IActionResult GetAdvertismentByCategory(int categoryId)
+        {
+
+            List<AdvertisementModel> Mylist = _db.Advertisements.Where(adv=>adv.CategoryId==categoryId).Select(ad => new AdvertisementModel
+            {
+                Title = ad.Title,
+                City = ad.City,
+                Region = ad.Region,
+                Address = ad.Address,
+                PhoneNumber = ad.PhoneNumber,
+                Description = ad.Description,
+                CreatorId = ad.UserId,
+                CategoryId = ad.CategoryId,
+                CreationTime = ad.CreationDate,
+                ExpireTime = ad.ExpireDate
+
+            }).ToList();
+            return Ok(Mylist);
+        }
+
+
 
 
 

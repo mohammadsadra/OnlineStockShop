@@ -10,7 +10,7 @@ using OnlineStockShop.Domain.Context;
 namespace OnlineStockShop.Migrations
 {
     [DbContext(typeof(OnlineStockShopDbContext))]
-    [Migration("20210202081358_init")]
+    [Migration("20210202083128_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

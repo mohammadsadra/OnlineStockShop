@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using OnlineStockShop.Domain.Advertisment;
@@ -13,6 +14,7 @@ namespace OnlineStockShop.Domain.Category
         {
             Advertisments = new HashSet<Advertisement>();
         }
+        [Key]
         public byte Id { get; set; }
         public string CategoryName { get; set; }
 

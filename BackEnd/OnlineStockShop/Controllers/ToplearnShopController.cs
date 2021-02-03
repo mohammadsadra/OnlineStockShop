@@ -28,7 +28,9 @@ namespace OnlineStockShop.Controllers
         public IActionResult GetAdvertisements()
         {
 
-            List<AdvertisementModel> Mylist = _db.Advertisements.Select(ad => new AdvertisementModel
+            List<AdvertisementModel> Mylist = _db.Advertisements
+            .Where(adv => DateTime.Compare(DateTime.Now, adv.ExpireDate) <= 0)
+            .Select(ad => new AdvertisementModel
             {
                 Title = ad.Title,
                 City = ad.City,
@@ -51,7 +53,9 @@ namespace OnlineStockShop.Controllers
         public IActionResult GetAdvertismentByCategory(int categoryId)
         {
 
-            List<AdvertisementModel> Mylist = _db.Advertisements.Where(adv => adv.CategoryId == categoryId).Select(ad => new AdvertisementModel
+            List<AdvertisementModel> Mylist = _db.Advertisements
+            .Where(adv => (adv.CategoryId == categoryId) && (DateTime.Compare(DateTime.Now, adv.ExpireDate) <= 0))
+            .Select(ad => new AdvertisementModel
             {
                 Title = ad.Title,
                 City = ad.City,

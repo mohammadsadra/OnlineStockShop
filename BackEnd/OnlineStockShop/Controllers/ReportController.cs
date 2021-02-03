@@ -75,41 +75,31 @@ namespace OnlineStockShop.Controllers
         [Route("UpdateReport")]
         public IActionResult UpdateReport([FromBody] Report report)
         {
-            bool status = false;  
-            try  
+            Report toBeUpdated = _db.Reports.Where(r => r.Id == report.Id).FirstOrDefault();  
+            if (toBeUpdated != null)  
             {  
-                Report toBeUpdated = _db.Reports.Where(r => r.Id == report.Id).FirstOrDefault();  
-                if (report != null)  
-                {  
-                    toBeUpdated.Description = report.Description;
-                    toBeUpdated.Title = report.Title;
-                    toBeUpdated.AdvertismentId = report.AdvertismentId;
-                    toBeUpdated.Advertisment = report.Advertisment;  
-                    _db.SaveChanges(); 
-                    status = true;  
-                }   
-            }  
-            catch (Exception)  {}  
-            return Ok(status); 
+                toBeUpdated.Description = report.Description;
+                toBeUpdated.Title = report.Title;
+                toBeUpdated.AdvertismentId = report.AdvertismentId;
+                toBeUpdated.Advertisment = report.Advertisment;  
+                _db.SaveChanges(); 
+                return Ok("Updated the report successfully");  
+            }   
+            return NotFound("Did not find the report!"); 
         }
 
         [HttpDelete]
         [Route("DeleteReport")]
         public IActionResult DeleteReport(int id)
-        {
-            bool status = false;  
-            try  
+        {  
+            Report toBeDeleted = _db.Reports.Where(r => r.Id == id).FirstOrDefault();  
+            if (toBeDeleted != null)  
             {  
-                Report report = _db.Reports.Where(r => r.Id == id).FirstOrDefault();  
-                if (report != null)  
-                {  
-                    _db.Reports.Remove(report);  
-                    _db.SaveChanges(); 
-                    status = true;  
-                }   
-            }  
-            catch (Exception)  {}  
-            return Ok(status); 
+                _db.Reports.Remove(toBeDeleted);  
+                _db.SaveChanges(); 
+                return Ok("Deleted the report successfully"); 
+            }     
+            return NotFound("Did not find the report!"); 
         }
     }
 }

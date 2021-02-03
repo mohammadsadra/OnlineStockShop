@@ -12,6 +12,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
 import {HttpClientModule} from '@angular/common/http';
 import { CreateAdComponent } from './Pages/create-ad/create-ad.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -34,7 +35,8 @@ import { CreateAdComponent } from './Pages/create-ad/create-ad.component';
     ModalModule.forRoot(),
     MatSnackBarModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-create-ad',
@@ -11,5 +12,7 @@ export class CreateAdComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
 
 }

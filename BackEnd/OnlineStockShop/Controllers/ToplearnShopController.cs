@@ -94,5 +94,47 @@ namespace OnlineStockShop.Controllers
             _db.SaveChanges();
             return Ok("ok");
         }
+
+        [HttpPut]
+        [Route("UpdateAdvertisment")]
+        public IActionResult UpdateAdvertisment([FromBody] Advertisement advertisement)
+        {
+            /*
+            This api won't change user-id nor the creation date.
+            Expiration date could be changed for premium users that has not 
+            been implemented yet
+            */
+            Advertisement toBeUpdated = _db.Advertisements.Where(ad => ad.Id == advertisement.Id).FirstOrDefault();  
+            if (toBeUpdated != null)  
+            {  
+                toBeUpdated.Id = advertisement.Id;
+                toBeUpdated.Title = advertisement.Title;
+                toBeUpdated.City = advertisement.City;
+                toBeUpdated.Region = advertisement.Region;
+                toBeUpdated.Address = advertisement.Address;
+                toBeUpdated.PhoneNumber = advertisement.PhoneNumber;
+                toBeUpdated.PictureLink = advertisement.PictureLink;
+                toBeUpdated.Description = advertisement.Description;
+                toBeUpdated.CategoryId = advertisement.CategoryId;
+                toBeUpdated.ExpireDate = advertisement.ExpireDate;
+                _db.SaveChanges(); 
+                return Ok("Updated the advertisement successfully");  
+            }   
+            return NotFound("Did not find the advertisement!"); 
+        }
+
+        [HttpDelete]
+        [Route("DeleteAdvertisment")]
+        public IActionResult DeleteAdvertisment(int id)
+        {  
+            Advertisement toBeDeleted = _db.Advertisements.Where(ad => ad.Id == id).FirstOrDefault();  
+            if (toBeDeleted != null)  
+            {  
+                _db.Advertisements.Remove(toBeDeleted);  
+                _db.SaveChanges(); 
+                return Ok("Deleted the advertisement successfully"); 
+            }     
+            return NotFound("Did not find the advertisement!"); 
+        }
     }
 }

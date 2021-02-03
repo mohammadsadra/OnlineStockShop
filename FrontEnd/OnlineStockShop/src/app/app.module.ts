@@ -11,6 +11,8 @@ import {AdvertismentsComponent, DialogContentExampleDialog} from './Pages/advert
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
 import {HttpClientModule} from '@angular/common/http';
+import { CreateAdComponent } from './Pages/create-ad/create-ad.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -20,7 +22,8 @@ import {HttpClientModule} from '@angular/common/http';
     AppComponent,
     HomeComponent,
     AdvertismentsComponent,
-    DialogContentExampleDialog
+    DialogContentExampleDialog,
+    CreateAdComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import {HttpClientModule} from '@angular/common/http';
     ModalModule.forRoot(),
     MatSnackBarModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

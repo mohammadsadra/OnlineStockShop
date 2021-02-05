@@ -24,36 +24,36 @@ namespace OnlineStockShop.Controllers
         }
 
         [HttpGet]
-        //[Route("GetReport")]
-        //public IActionResult GetReport()
-        //{
+        [Route("GetReport")]
+        public IActionResult GetReport()
+        {
 
-        //    List<ReportModel> Mylist = _db.Reports.Select(report => new ReportModel
-        //    {
-        //        Description = report.Description,
-        //        Title = report.Title,
-        //        AdvertisementId = report.AdvertismentId
-        //    }).ToList();
+           List<ReportModel> Mylist = _db.Reports.Select(report => new ReportModel
+           {
+               Description = report.Description,
+               Title = report.Title,
+               AdvertisementId = report.AdvertismentId
+           }).ToList();
 
-        //    return Ok(Mylist);
-        //}
+           return Ok(Mylist);
+        }
 
-        //[HttpGet]
-        //[Route("GetReportByAdvertisment")]
-        //public IActionResult GetReportByAdvertisment(int advertisementId)
-        //{
+        [HttpGet]
+        [Route("GetReportByAdvertisment")]
+        public IActionResult GetReportByAdvertisment(string advertisementId)
+        {
 
-        //    List<ReportModel> Mylist = _db.Reports
-        //    .Where(r => r.AdvertismentId == advertisementId)
-        //    .Select(report => new ReportModel
-        //    {
-        //        Description = report.Description,
-        //        Title = report.Title,
-        //        AdvertisementId = report.AdvertismentId
-        //    }).ToList();
+           List<ReportModel> Mylist = _db.Reports
+           .Where(r => r.AdvertismentId == advertisementId)
+           .Select(report => new ReportModel
+           {
+               Description = report.Description,
+               Title = report.Title,
+               AdvertisementId = report.AdvertismentId
+           }).ToList();
 
-        //    return Ok(Mylist);
-        //}
+           return Ok(Mylist);
+        }
 
         [HttpPost]
         [Route("CreateReport")]
@@ -86,18 +86,18 @@ namespace OnlineStockShop.Controllers
             return NotFound("Did not find the report!"); 
         }
 
-        //[HttpDelete]
-        //[Route("DeleteReport")]
-        //public IActionResult DeleteReport(int id)
-        //{  
-        //    Report toBeDeleted = _db.Reports.Where(r => r.Id == id).FirstOrDefault();  
-        //    if (toBeDeleted != null)  
-        //    {  
-        //        _db.Reports.Remove(toBeDeleted);  
-        //        _db.SaveChanges(); 
-        //        return Ok("Deleted the report successfully"); 
-        //    }     
-        //    return NotFound("Did not find the report!"); 
-        //}
+        [HttpDelete]
+        [Route("DeleteReport")]
+        public IActionResult DeleteReport(string id)
+        {  
+           Report toBeDeleted = _db.Reports.Where(r => r.Id == id).FirstOrDefault();  
+           if (toBeDeleted != null)  
+           {  
+               _db.Reports.Remove(toBeDeleted);  
+               _db.SaveChanges(); 
+               return Ok("Deleted the report successfully"); 
+           }     
+           return NotFound("Did not find the report!"); 
+        }
     }
 }

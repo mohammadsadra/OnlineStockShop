@@ -41,6 +41,8 @@ export class NewAdvertisementComponent implements OnInit {
       Description: ['', Validators.required],
       PictureLink: ['', Validators.required],
       PhoneNumber: ['', Validators.required],
+      Price: ['', Validators.required],
+      Days: ['', Validators.required]
     });
     this.getCategories();
   }
@@ -67,9 +69,10 @@ export class NewAdvertisementComponent implements OnInit {
       this.newAdForm.controls.Description.value,
       this.newAdForm.controls.PictureLink.value,
       this.newAdForm.controls.PhoneNumber.value,
-      this.adDate.controls.start.value,
       this.adDate.controls.end.value,
-      this.newAdForm.controls.Category.value
+      this.newAdForm.controls.Category.value,
+      // tslint:disable-next-line:radix
+      parseInt(this.newAdForm.controls.Price.value)
     );
     // console.log(this.newAdForm.controls.Title.value);
     // console.log(this.newAdForm.controls.City.value);
@@ -80,14 +83,17 @@ export class NewAdvertisementComponent implements OnInit {
     // console.log(this.newAdForm.controls.Description.value);
     // console.log(this.newAdForm.controls.PictureLink.value);
     // console.log(this.newAdForm.controls.PhoneNumber.value);
-    // console.log(this.adDate.controls.start.value);
-    // console.log(this.adDate.controls.end.value);
-    this.openSnackBar(this.newAdForm.controls.Status.value, this.newAdForm.controls.Category.value);
+    // tslint:disable-next-line:radix
+    console.log(parseInt(this.newAdForm.controls.Price.value));
+    // this.openSnackBar(this.newAdForm.controls.Status.value, this.newAdForm.controls.Category.value);
     this.advertismentService.postAd(adInfo).subscribe(res => {
         this.openSnackBar('Successfully Created!', 'Done');
         // this.newAdForm.reset();
         // this.adDate.reset();
-      }, error => this.openSnackBar('Try Again!', 'Done')
+      }, error => {
+      this.openSnackBar('Try Again!', 'Done');
+      console.log(error);
+      }
     );
   }
 

@@ -1,3 +1,5 @@
+import DateTimeFormat = Intl.DateTimeFormat;
+
 export class AdDTO {
   public Title: string;
   public City: string;
@@ -7,9 +9,8 @@ export class AdDTO {
   public Description: string;
   public PictureLink: string;
   public PhoneNumber: string;
-  public CreationTime: Date;
-  public ExpireTime: Date;
-  public UserId = 1;
+  public ExpireDate: Date;
+  public UserId = '1';
   public CategoryId: string;
   public Price: number;
 
@@ -21,8 +22,7 @@ export class AdDTO {
               Description: string,
               PictureLink: string,
               PhoneNumber: string,
-              CreationTime: Date,
-              ExpireTime: Date,
+              ExpireDate: Date,
               CategoryId: string,
               Price: number
   ) {
@@ -34,8 +34,7 @@ export class AdDTO {
     this.Description = Description;
     this.PictureLink = PictureLink;
     this.PhoneNumber = PhoneNumber;
-    this.CreationTime = CreationTime;
-    this.ExpireTime = ExpireTime;
+    this.ExpireDate = ExpireDate;
     this.CategoryId = CategoryId;
     this.Price = Price;
   }

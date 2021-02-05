@@ -18,6 +18,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatIconModule} from '@angular/material/icon';
 import {MatNativeDateModule} from '@angular/material/core';
 import { NewAdvertisementComponent } from './Pages/new-advertisement/new-advertisement.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+
 
 
 
@@ -46,7 +49,9 @@ import { NewAdvertisementComponent } from './Pages/new-advertisement/new-adverti
     MatFormFieldModule,
     MatDatepickerModule,
     MatIconModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatButtonModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

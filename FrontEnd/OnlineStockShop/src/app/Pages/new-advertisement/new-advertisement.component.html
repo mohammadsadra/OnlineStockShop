@@ -1,0 +1,73 @@
+<body>
+<div>
+  <div class="card">
+    <div class="content">
+      <form class="example-form" [formGroup]="newAdForm" [style.fontSize.px]='12' style="margin-top: 550px;">
+        <h3 style="color: #d4d9dc; font-weight: 900; font-size: 40px; ">
+          ثبت آگهی
+        </h3>
+<!--        <hr class="simpleLine">-->
+
+        <h3>
+          <mat-form-field class="example-full-width" style="text-align: right;">
+            <input matInput placeholder="نام محصول" style="text-align: right" formControlName="Title">
+          </mat-form-field>
+        </h3>
+
+
+        <h3>
+          <mat-form-field class="example-full-width" style="text-align: right">
+            <input matInput placeholder="دسته بندی" style="text-align: right" formControlName="Title">
+          </mat-form-field>
+        </h3>
+
+
+        <h3>
+          <mat-form-field class="example-full-width" style="text-align: right">
+            <input matInput placeholder="شهر" style="text-align: right" formControlName="City">
+          </mat-form-field>
+        </h3>
+
+        <h3>
+          <mat-form-field class="example-full-width" style="text-align: right">
+            <input matInput placeholder="ناحیه" style="text-align: right" formControlName="Status">
+          </mat-form-field>
+        </h3>
+
+        <h3>
+          <mat-form-field class="example-full-width" style="text-align: right">
+            <textarea matInput placeholder="آدرس" style="text-align: right" formControlName="Address"></textarea>
+          </mat-form-field>
+        </h3>
+
+        <h3>
+          <mat-form-field class="example-full-width" style="text-align: right">
+            <textarea matInput placeholder="توضیحات" style="text-align: right" formControlName="Description"></textarea>
+          </mat-form-field>
+        </h3>
+
+
+        <h3>
+          <mat-form-field class="example-full-width" style="text-align: right">
+            <input matInput placeholder="شماره تماس" style="text-align: right" formControlName="PhoneNumber">
+          </mat-form-field>
+        </h3>
+
+        <h3>
+          <mat-form-field class="example-full-width" style="text-align: right">
+            <input matInput placeholder="لینک تصویر" style="text-align: right" formControlName="PictureLink">
+          </mat-form-field>
+        </h3>
+        <div class="example-button-row">
+          <button mat-raised-button color="primary" style="margin: 5px; width: 80px">ثبت</button>
+          <button mat-raised-button color="accent" style="margin: 5px;width: 80px" (click)="newAdForm.reset()">پاک کردن</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+
+</body>
+

@@ -7,6 +7,7 @@ namespace OnlineStockShop.Models
 {
     public class AdvertisementModel
     {
+        public byte Id { get; set; }
 
         public string Title { get; set; }
 

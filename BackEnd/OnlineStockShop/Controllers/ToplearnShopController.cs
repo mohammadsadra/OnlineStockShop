@@ -32,6 +32,7 @@ namespace OnlineStockShop.Controllers
             .Where(adv => DateTime.Compare(DateTime.Now, adv.ExpireDate) <= 0)
             .Select(ad => new AdvertisementModel
             {
+                Id = ad.Id,
                 Title = ad.Title,
                 City = ad.City,
                 Region = ad.Region,
@@ -57,6 +58,7 @@ namespace OnlineStockShop.Controllers
             .Where(adv => (adv.CategoryId == categoryId) && (DateTime.Compare(DateTime.Now, adv.ExpireDate) <= 0))
             .Select(ad => new AdvertisementModel
             {
+                Id = ad.Id,
                 Title = ad.Title,
                 City = ad.City,
                 Region = ad.Region,

@@ -92,7 +92,7 @@ export class NewAdvertisementComponent implements OnInit {
         // this.adDate.reset();
       }, error => {
       this.openSnackBar('Try Again!', 'Done');
-      console.log(error);
+      console.log(error.message);
       }
     );
   }

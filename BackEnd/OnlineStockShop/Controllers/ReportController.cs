@@ -65,7 +65,6 @@ namespace OnlineStockShop.Controllers
                 Description = report.Description,
                 Title = report.Title,
                 AdvertismentId = report.AdvertismentId,
-                Advertisment = report.Advertisment
             });
             _db.SaveChanges();
             return Ok("ok");
@@ -80,8 +79,7 @@ namespace OnlineStockShop.Controllers
             {  
                 toBeUpdated.Description = report.Description;
                 toBeUpdated.Title = report.Title;
-                toBeUpdated.AdvertismentId = report.AdvertismentId;
-                toBeUpdated.Advertisment = report.Advertisment;  
+                toBeUpdated.AdvertismentId = report.AdvertismentId; 
                 _db.SaveChanges(); 
                 return Ok("Updated the report successfully");  
             }   

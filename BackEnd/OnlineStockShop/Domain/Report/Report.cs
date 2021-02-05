@@ -12,6 +12,5 @@ namespace OnlineStockShop.Domain.Report
         public string Description { get; set; }
         public string Title { get; set; }
         public byte AdvertismentId { get; set; }
-        public virtual Advertisement Advertisment { get; set; }
     }
 }

@@ -136,6 +136,9 @@ body::after {
 .container .card .content a:hover{
   color: #7436f3;
 }
+.container .card .content .reportBtn :hover{
+  color: #ffffff !important;
+}
 .animated {
   -webkit-animation-duration: 3s;
   animation-duration: 3s;

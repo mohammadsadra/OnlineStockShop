@@ -39,15 +39,6 @@ export class AdvertismentsComponent implements OnInit {
 
   getAds(): void {
     this.AdvertismentService.getAdvertisment().subscribe(res => {
-      // let tmp = [];
-      // tslint:disable-next-line:only-arrow-functions typedef
-      // res.forEach(function(value) {
-      //   tmp.push(value);
-      // });
-      // tslint:disable-next-line:prefer-for-of
-      // for (let a = 0; a < res.length; a++) {
-      //   this.AdsList.push(res[a]);
-      // }
       this.result = res;
     });
   }

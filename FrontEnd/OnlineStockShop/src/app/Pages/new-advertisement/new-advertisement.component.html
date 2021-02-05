@@ -1,12 +1,12 @@
-<body >
-<div class="animated fadeIn">
+<body>
+<div class="animated fadeIn" style="z-index: 1">
   <div class="card">
     <div class="content">
       <form class="example-form" [formGroup]="newAdForm" [style.fontSize.px]='12' style="margin-top: 550px;">
         <h3 style="color: #d4d9dc; font-weight: 900; font-size: 40px; ">
           ثبت آگهی
         </h3>
-<!--        <hr class="simpleLine">-->
+
 
         <h3>
           <mat-form-field class="example-full-width" style="text-align: right;">
@@ -17,7 +17,11 @@
 
         <h3>
           <mat-form-field class="example-full-width" style="text-align: right">
-            <input matInput placeholder="دسته بندی" style="text-align: right" formControlName="Title">
+            <!--            <input matInput placeholder="دسته بندی" style="text-align: right" formControlName="Title">-->
+            <mat-label>دسته بندی</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let item of category" [value]="item.id" formControlName="Category" style="text-align: right">{{item.categoryName}}</mat-option>
+            </mat-select>
           </mat-form-field>
         </h3>
 
@@ -58,9 +62,23 @@
             <input matInput placeholder="لینک تصویر" style="text-align: right" formControlName="PictureLink">
           </mat-form-field>
         </h3>
+
+          <mat-form-field appearance="fill">
+            <mat-label>تاریخ را وارد کنید</mat-label>
+            <mat-date-range-input [formGroup]="adDate" [rangePicker]="picker">
+              <input matStartDate formControlName="start" placeholder="تاریخ شروع">
+              <input matEndDate formControlName="end" placeholder="تاریخ پایان">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+
+            <mat-error *ngIf="adDate.controls.start.hasError('matStartDateInvalid')">تاریخ شروع نامعتبر است</mat-error>
+            <mat-error *ngIf="adDate.controls.end.hasError('matEndDateInvalid')">تاریخ پایان نامعتبر است</mat-error>
+          </mat-form-field>
+
         <div class="example-button-row">
           <button mat-raised-button color="primary" style="margin: 5px; width: 80px">ثبت</button>
-          <button mat-raised-button color="accent" style="margin: 5px;width: 80px" (click)="newAdForm.reset()">پاک کردن</button>
+          <button mat-raised-button color="accent" style="margin: 5px;width: 80px" (click)="newAdForm.reset(); adDate.reset()">پاک کردن</button>
         </div>
 
       </form>

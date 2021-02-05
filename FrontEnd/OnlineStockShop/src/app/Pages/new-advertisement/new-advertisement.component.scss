@@ -10,6 +10,7 @@ body {
   min-height: 80vh;
   background-color: #161623;
   overflow: hidden;
+  z-index: -1;
 }
 body::before {
   content: '';
@@ -20,7 +21,6 @@ body::before {
   height: 100%;
   background: linear-gradient(#f00, #f0f);
   clip-path: circle(30% at right 70%);
-  overflow: hidden;
 }
 
 body::after {
@@ -32,7 +32,7 @@ body::after {
   height: 100%;
   background: linear-gradient(#2196f3, #e91e63);
   clip-path: circle(20% at 10% 10%);
-  overflow: hidden;
+
 }
 
 
@@ -153,3 +153,31 @@ body::after {
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
 }
+::ng-deep .mat-select-value{
+  color: white;
+}
+
+//::ng-deep .mat-focused .mat-form-field-label {
+//  /*change color of label*/
+//  color: white !important;
+//}
+//
+::ng-deep .mat-form-field-label {
+  /*change color of label*/
+  color: white !important;
+  direction: rtl;
+  text-align: right;
+}
+//
+//
+//::ng-deep .mat-datepicker-toggle {
+//  color: white !important;
+//}
+//
+//::ng-deep .mat-datepicker-content{
+//  color: white !important;
+//}
+//
+//::ng-deep .mat-datepicker{
+//  color: white !important;
+//}

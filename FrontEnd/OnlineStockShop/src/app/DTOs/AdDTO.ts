@@ -9,7 +9,7 @@ export class AdDTO {
   public PhoneNumber: string;
   public CreationTime: Date;
   public ExpireTime: Date;
-  public UserId: number = 1;
+  public UserId = 1;
   public CategoryId: number;
 
   constructor(Title: string,

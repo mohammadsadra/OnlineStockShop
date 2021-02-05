@@ -7,8 +7,11 @@ namespace OnlineStockShop.Models
 {
     public class AdvertisementModel
     {
+        public string Id { get; set; }
 
         public string Title { get; set; }
+
+        public int Price { get; set; }
 
         public string City { get; set; }
 

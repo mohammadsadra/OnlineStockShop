@@ -6,6 +6,6 @@ namespace OnlineStockShop.Models
     {
         public string Description { get; set; }
         public string Title { get; set; }
-        public byte AdvertisementId { get; set;}
+        public string AdvertisementId { get; set;}
     }
 }

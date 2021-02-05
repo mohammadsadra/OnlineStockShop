@@ -10,10 +10,12 @@ namespace OnlineStockShop.Domain.Advertisment
     public class Advertisement
     {
         #region properties
-
-        public byte Id { get; set; }
+        [Key]
+        public string Id { get; set; }
 
         public string Title { get; set; }
+
+        public int Price { get; set; }
 
         public string City { get; set; }
 
@@ -25,9 +27,9 @@ namespace OnlineStockShop.Domain.Advertisment
 
         public string Description { get; set; }
 
-        public byte UserId { get; set; }
+        public string UserId { get; set; }
 
-        public byte CategoryId { get; set; }
+        public string CategoryId { get; set; }
 
         public string PictureLink { get; set; }
 

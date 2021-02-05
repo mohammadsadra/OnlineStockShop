@@ -28,31 +28,31 @@ namespace OnlineStockShop.Controllers
         public IActionResult GetReport()
         {
 
-            List<ReportModel> Mylist = _db.Reports.Select(report => new ReportModel
-            {
-                Description = report.Description,
-                Title = report.Title,
-                AdvertisementId = report.AdvertismentId
-            }).ToList();
+           List<ReportModel> Mylist = _db.Reports.Select(report => new ReportModel
+           {
+               Description = report.Description,
+               Title = report.Title,
+               AdvertisementId = report.AdvertismentId
+           }).ToList();
 
-            return Ok(Mylist);
+           return Ok(Mylist);
         }
 
         [HttpGet]
         [Route("GetReportByAdvertisment")]
-        public IActionResult GetReportByAdvertisment(int advertisementId)
+        public IActionResult GetReportByAdvertisment(string advertisementId)
         {
 
-            List<ReportModel> Mylist = _db.Reports
-            .Where(r => r.AdvertismentId == advertisementId)
-            .Select(report => new ReportModel
-            {
-                Description = report.Description,
-                Title = report.Title,
-                AdvertisementId = report.AdvertismentId
-            }).ToList();
+           List<ReportModel> Mylist = _db.Reports
+           .Where(r => r.AdvertismentId == advertisementId)
+           .Select(report => new ReportModel
+           {
+               Description = report.Description,
+               Title = report.Title,
+               AdvertisementId = report.AdvertismentId
+           }).ToList();
 
-            return Ok(Mylist);
+           return Ok(Mylist);
         }
 
         [HttpPost]
@@ -61,11 +61,10 @@ namespace OnlineStockShop.Controllers
         {
             _db.Reports.Add(new Report
             {
-                Id = report.Id,
+                Id = Guid.NewGuid().ToString(),
                 Description = report.Description,
                 Title = report.Title,
                 AdvertismentId = report.AdvertismentId,
-                Advertisment = report.Advertisment
             });
             _db.SaveChanges();
             return Ok("ok");
@@ -80,8 +79,7 @@ namespace OnlineStockShop.Controllers
             {  
                 toBeUpdated.Description = report.Description;
                 toBeUpdated.Title = report.Title;
-                toBeUpdated.AdvertismentId = report.AdvertismentId;
-                toBeUpdated.Advertisment = report.Advertisment;  
+                toBeUpdated.AdvertismentId = report.AdvertismentId; 
                 _db.SaveChanges(); 
                 return Ok("Updated the report successfully");  
             }   
@@ -90,16 +88,16 @@ namespace OnlineStockShop.Controllers
 
         [HttpDelete]
         [Route("DeleteReport")]
-        public IActionResult DeleteReport(int id)
+        public IActionResult DeleteReport(string id)
         {  
-            Report toBeDeleted = _db.Reports.Where(r => r.Id == id).FirstOrDefault();  
-            if (toBeDeleted != null)  
-            {  
-                _db.Reports.Remove(toBeDeleted);  
-                _db.SaveChanges(); 
-                return Ok("Deleted the report successfully"); 
-            }     
-            return NotFound("Did not find the report!"); 
+           Report toBeDeleted = _db.Reports.Where(r => r.Id == id).FirstOrDefault();  
+           if (toBeDeleted != null)  
+           {  
+               _db.Reports.Remove(toBeDeleted);  
+               _db.SaveChanges(); 
+               return Ok("Deleted the report successfully"); 
+           }     
+           return NotFound("Did not find the report!"); 
         }
     }
 }

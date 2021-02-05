@@ -28,48 +28,52 @@ namespace OnlineStockShop.Controllers
         public IActionResult GetAdvertisements()
         {
 
-            List<AdvertisementModel> Mylist = _db.Advertisements
-            .Where(adv => DateTime.Compare(DateTime.Now, adv.ExpireDate) <= 0)
-            .Select(ad => new AdvertisementModel
-            {
-                Title = ad.Title,
-                City = ad.City,
-                Region = ad.Region,
-                Address = ad.Address,
-                PhoneNumber = ad.PhoneNumber,
-                PictureLink =ad.PictureLink,
-                Description = ad.Description,
-                Creator = ad.User.LastName,
-                Category = ad.Category.CategoryName,
-                CreationTime = ad.CreationDate,
-                ExpireTime = ad.ExpireDate
+           List<AdvertisementModel> Mylist = _db.Advertisements
+           .Where(adv => DateTime.Compare(DateTime.Now, adv.ExpireDate) <= 0)
+           .Select(ad => new AdvertisementModel
+           {
+               Id = ad.Id,
+               Title = ad.Title,
+               Price = ad.Price,
+               City = ad.City,
+               Region = ad.Region,
+               Address = ad.Address,
+               PhoneNumber = ad.PhoneNumber,
+               PictureLink =ad.PictureLink,
+               Description = ad.Description,
+               Creator = ad.User.LastName,
+               Category = ad.Category.CategoryName,
+               CreationTime = ad.CreationDate,
+               ExpireTime = ad.ExpireDate
 
-            }).ToList();
-            return Ok(Mylist);
+           }).ToList();
+           return Ok(Mylist);
         }
 
         [HttpGet]
         [Route("GetAdvertismentByCategory")]
-        public IActionResult GetAdvertismentByCategory(int categoryId)
+        public IActionResult GetAdvertismentByCategory(string categoryId)
         {
 
-            List<AdvertisementModel> Mylist = _db.Advertisements
-            .Where(adv => (adv.CategoryId == categoryId) && (DateTime.Compare(DateTime.Now, adv.ExpireDate) <= 0))
-            .Select(ad => new AdvertisementModel
-            {
-                Title = ad.Title,
-                City = ad.City,
-                Region = ad.Region,
-                Address = ad.Address,
-                PhoneNumber = ad.PhoneNumber,
-                Description = ad.Description,
-                Creator = ad.User.LastName,
-                Category = ad.Category.CategoryName,
-                CreationTime = ad.CreationDate,
-                ExpireTime = ad.ExpireDate
+           List<AdvertisementModel> Mylist = _db.Advertisements
+           .Where(adv => (adv.CategoryId == categoryId) && (DateTime.Compare(DateTime.Now, adv.ExpireDate) <= 0))
+           .Select(ad => new AdvertisementModel
+           {
+               Id = ad.Id,
+               Title = ad.Title,
+               Price = ad.Price,
+               City = ad.City,
+               Region = ad.Region,
+               Address = ad.Address,
+               PhoneNumber = ad.PhoneNumber,
+               Description = ad.Description,
+               Creator = ad.User.LastName,
+               Category = ad.Category.CategoryName,
+               CreationTime = ad.CreationDate,
+               ExpireTime = ad.ExpireDate
 
-            }).ToList();
-            return Ok(Mylist);
+           }).ToList();
+           return Ok(Mylist);
         }
 
         [HttpPost]
@@ -78,8 +82,9 @@ namespace OnlineStockShop.Controllers
         {
             _db.Advertisements.Add(new Advertisement
             {
-                Id = advertisement.Id,
+                Id = Guid.NewGuid().ToString(),
                 Title = advertisement.Title,
+                Price = advertisement.Price,
                 City = advertisement.City,
                 Region = advertisement.Region,
                 Address = advertisement.Address,
@@ -100,15 +105,15 @@ namespace OnlineStockShop.Controllers
         public IActionResult UpdateAdvertisment([FromBody] Advertisement advertisement)
         {
             /*
-            This api won't change user-id nor the creation date.
+            This api won't change user-id and AD id nor the creation date.
             Expiration date could be changed for premium users that has not 
             been implemented yet
             */
             Advertisement toBeUpdated = _db.Advertisements.Where(ad => ad.Id == advertisement.Id).FirstOrDefault();  
             if (toBeUpdated != null)  
             {  
-                toBeUpdated.Id = advertisement.Id;
                 toBeUpdated.Title = advertisement.Title;
+                toBeUpdated.Price = advertisement.Price;
                 toBeUpdated.City = advertisement.City;
                 toBeUpdated.Region = advertisement.Region;
                 toBeUpdated.Address = advertisement.Address;
@@ -125,16 +130,16 @@ namespace OnlineStockShop.Controllers
 
         [HttpDelete]
         [Route("DeleteAdvertisment")]
-        public IActionResult DeleteAdvertisment(int id)
+        public IActionResult DeleteAdvertisment(string id)
         {  
-            Advertisement toBeDeleted = _db.Advertisements.Where(ad => ad.Id == id).FirstOrDefault();  
-            if (toBeDeleted != null)  
-            {  
-                _db.Advertisements.Remove(toBeDeleted);  
-                _db.SaveChanges(); 
-                return Ok("Deleted the advertisement successfully"); 
-            }     
-            return NotFound("Did not find the advertisement!"); 
+           Advertisement toBeDeleted = _db.Advertisements.Where(ad => ad.Id == id).FirstOrDefault();  
+           if (toBeDeleted != null)  
+           {  
+               _db.Advertisements.Remove(toBeDeleted);  
+               _db.SaveChanges(); 
+               return Ok("Deleted the advertisement successfully"); 
+           }     
+           return NotFound("Did not find the advertisement!"); 
         }
     }
 }

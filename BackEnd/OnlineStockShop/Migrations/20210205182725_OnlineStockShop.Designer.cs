@@ -10,8 +10,8 @@ using OnlineStockShop.Domain.Context;
 namespace OnlineStockShop.Migrations
 {
     [DbContext(typeof(OnlineStockShopDbContext))]
-    [Migration("20210202083128_init")]
-    partial class init
+    [Migration("20210205182725_OnlineStockShop")]
+    partial class OnlineStockShop
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,14 +23,14 @@ namespace OnlineStockShop.Migrations
 
             modelBuilder.Entity("OnlineStockShop.Domain.Advertisment.Advertisement", b =>
                 {
-                    b.Property<byte>("Id")
-                        .HasColumnType("tinyint");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte>("CategoryId")
-                        .HasColumnType("tinyint");
+                    b.Property<string>("CategoryId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
@@ -50,6 +50,9 @@ namespace OnlineStockShop.Migrations
                     b.Property<string>("PictureLink")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
                     b.Property<string>("Region")
                         .HasColumnType("nvarchar(max)");
 
@@ -59,8 +62,8 @@ namespace OnlineStockShop.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte>("UserId")
-                        .HasColumnType("tinyint");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -73,8 +76,8 @@ namespace OnlineStockShop.Migrations
 
             modelBuilder.Entity("OnlineStockShop.Domain.Category.Category", b =>
                 {
-                    b.Property<byte>("Id")
-                        .HasColumnType("tinyint");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CategoryName")
                         .HasColumnType("nvarchar(max)");
@@ -86,29 +89,27 @@ namespace OnlineStockShop.Migrations
 
             modelBuilder.Entity("OnlineStockShop.Domain.Report.Report", b =>
                 {
-                    b.Property<byte>("Id")
-                        .HasColumnType("tinyint");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<byte>("AdvertismentId")
-                        .HasColumnType("tinyint");
+                    b.Property<string>("AdvertismentId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("title")
+                    b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AdvertismentId");
 
                     b.ToTable("Reports");
                 });
 
             modelBuilder.Entity("OnlineStockShop.Domain.User.User", b =>
                 {
-                    b.Property<byte>("Id")
-                        .HasColumnType("tinyint");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -131,30 +132,15 @@ namespace OnlineStockShop.Migrations
                 {
                     b.HasOne("OnlineStockShop.Domain.Category.Category", "Category")
                         .WithMany("Advertisments")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CategoryId");
 
                     b.HasOne("OnlineStockShop.Domain.User.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Category");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("OnlineStockShop.Domain.Report.Report", b =>
-                {
-                    b.HasOne("OnlineStockShop.Domain.Advertisment.Advertisement", "Advertisment")
-                        .WithMany()
-                        .HasForeignKey("AdvertismentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Advertisment");
                 });
 
             modelBuilder.Entity("OnlineStockShop.Domain.Category.Category", b =>

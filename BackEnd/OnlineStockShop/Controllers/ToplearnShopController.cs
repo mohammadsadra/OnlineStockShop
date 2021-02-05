@@ -78,7 +78,7 @@ namespace OnlineStockShop.Controllers
 
         [HttpPost]
         [Route("createAdvertisment")]
-        public IActionResult createAdvertisment([FromBody] Advertisement advertisement, int days)
+        public IActionResult createAdvertisment([FromBody] Advertisement advertisement)
         {
             _db.Advertisements.Add(new Advertisement
             {
@@ -86,6 +86,7 @@ namespace OnlineStockShop.Controllers
                 Title = advertisement.Title,
                 Price = advertisement.Price,
                 City = advertisement.City,
+                Status = advertisement.Status,
                 Region = advertisement.Region,
                 Address = advertisement.Address,
                 PhoneNumber = advertisement.PhoneNumber,
@@ -94,7 +95,7 @@ namespace OnlineStockShop.Controllers
                 UserId = advertisement.UserId,
                 CategoryId = advertisement.CategoryId,
                 CreationDate = DateTime.Now,
-                ExpireDate = DateTime.Today.AddDays(days)
+                ExpireDate = advertisement.ExpireDate
             });
             _db.SaveChanges();
             return Ok("ok");

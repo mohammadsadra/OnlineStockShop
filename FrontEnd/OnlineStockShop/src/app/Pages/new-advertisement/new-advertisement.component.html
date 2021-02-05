@@ -2,7 +2,7 @@
 <div class="animated fadeIn" style="z-index: 1">
   <div class="card">
     <div class="content">
-      <form class="example-form" [formGroup]="newAdForm" [style.fontSize.px]='12' style="margin-top: 550px;">
+      <form class="example-form" [formGroup]="newAdForm" [style.fontSize.px]='12' style="margin-top: 750px;">
         <h3 style="color: #d4d9dc; font-weight: 900; font-size: 40px; ">
           ثبت آگهی
         </h3>
@@ -19,8 +19,18 @@
           <mat-form-field class="example-full-width" style="text-align: right">
             <!--            <input matInput placeholder="دسته بندی" style="text-align: right" formControlName="Title">-->
             <mat-label>دسته بندی</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let item of category" [value]="item.id" formControlName="Category" style="text-align: right">{{item.categoryName}}</mat-option>
+            <mat-select formControlName="Category">
+              <mat-option *ngFor="let item of category" [value]="item.id" style="text-align: right">{{item.categoryName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </h3>
+
+        <h3>
+          <mat-form-field class="example-full-width" style="text-align: right">
+            <mat-label>وضعیت</mat-label>
+            <mat-select formControlName="Status">
+              <mat-option value="نو"  style="text-align: right">نو</mat-option>
+              <mat-option value="کارکرده"  style="text-align: right">کارکرده</mat-option>
             </mat-select>
           </mat-form-field>
         </h3>
@@ -34,7 +44,7 @@
 
         <h3>
           <mat-form-field class="example-full-width" style="text-align: right">
-            <input matInput placeholder="ناحیه" style="text-align: right" formControlName="Status">
+            <input matInput placeholder="ناحیه" style="text-align: right" formControlName="Region">
           </mat-form-field>
         </h3>
 
@@ -63,7 +73,7 @@
           </mat-form-field>
         </h3>
 
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="fill" [style.fontSize.px]='14' style="color: whitesmoke!important;">
             <mat-label>تاریخ را وارد کنید</mat-label>
             <mat-date-range-input [formGroup]="adDate" [rangePicker]="picker">
               <input matStartDate formControlName="start" placeholder="تاریخ شروع">
@@ -77,7 +87,7 @@
           </mat-form-field>
 
         <div class="example-button-row">
-          <button mat-raised-button color="primary" style="margin: 5px; width: 80px">ثبت</button>
+          <button mat-raised-button color="primary" style="margin: 5px; width: 80px" (click)="postAd()">ثبت</button>
           <button mat-raised-button color="accent" style="margin: 5px;width: 80px" (click)="newAdForm.reset(); adDate.reset()">پاک کردن</button>
         </div>
 
@@ -85,7 +95,6 @@
     </div>
   </div>
 </div>
-
 
 </body>
 

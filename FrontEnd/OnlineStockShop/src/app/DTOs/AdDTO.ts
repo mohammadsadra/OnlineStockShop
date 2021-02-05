@@ -10,7 +10,8 @@ export class AdDTO {
   public CreationTime: Date;
   public ExpireTime: Date;
   public UserId = 1;
-  public CategoryId: number;
+  public CategoryId: string;
+  public Price: number;
 
   constructor(Title: string,
               City: string,
@@ -22,7 +23,8 @@ export class AdDTO {
               PhoneNumber: string,
               CreationTime: Date,
               ExpireTime: Date,
-              CategoryId: number
+              CategoryId: string,
+              Price: number
   ) {
     this.Title = Title;
     this.City = City;
@@ -35,5 +37,6 @@ export class AdDTO {
     this.CreationTime = CreationTime;
     this.ExpireTime = ExpireTime;
     this.CategoryId = CategoryId;
+    this.Price = Price;
   }
 }

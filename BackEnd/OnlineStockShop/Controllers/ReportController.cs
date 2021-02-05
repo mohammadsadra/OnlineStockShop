@@ -61,7 +61,7 @@ namespace OnlineStockShop.Controllers
         {
             _db.Reports.Add(new Report
             {
-                Id = report.Id,
+                Id = Guid.NewGuid().ToString(),
                 Description = report.Description,
                 Title = report.Title,
                 AdvertismentId = report.AdvertismentId,

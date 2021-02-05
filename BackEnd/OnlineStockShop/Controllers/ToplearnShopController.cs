@@ -82,7 +82,7 @@ namespace OnlineStockShop.Controllers
         {
             _db.Advertisements.Add(new Advertisement
             {
-                Id = advertisement.Id,
+                Id = Guid.NewGuid().ToString(),
                 Title = advertisement.Title,
                 Price = advertisement.Price,
                 City = advertisement.City,
@@ -105,14 +105,13 @@ namespace OnlineStockShop.Controllers
         public IActionResult UpdateAdvertisment([FromBody] Advertisement advertisement)
         {
             /*
-            This api won't change user-id nor the creation date.
+            This api won't change user-id and AD id nor the creation date.
             Expiration date could be changed for premium users that has not 
             been implemented yet
             */
             Advertisement toBeUpdated = _db.Advertisements.Where(ad => ad.Id == advertisement.Id).FirstOrDefault();  
             if (toBeUpdated != null)  
             {  
-                toBeUpdated.Id = advertisement.Id;
                 toBeUpdated.Title = advertisement.Title;
                 toBeUpdated.Price = advertisement.Price;
                 toBeUpdated.City = advertisement.City;

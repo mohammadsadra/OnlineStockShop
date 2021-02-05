@@ -23,56 +23,56 @@ namespace OnlineStockShop.Controllers
 
         }
 
-        [HttpGet]
-        [Route("GetAdvertisment")]
-        public IActionResult GetAdvertisements()
-        {
+        //[HttpGet]
+        //[Route("GetAdvertisment")]
+        //public IActionResult GetAdvertisements()
+        //{
 
-            List<AdvertisementModel> Mylist = _db.Advertisements
-            .Where(adv => DateTime.Compare(DateTime.Now, adv.ExpireDate) <= 0)
-            .Select(ad => new AdvertisementModel
-            {
-                Id = ad.Id,
-                Title = ad.Title,
-                City = ad.City,
-                Region = ad.Region,
-                Address = ad.Address,
-                PhoneNumber = ad.PhoneNumber,
-                PictureLink =ad.PictureLink,
-                Description = ad.Description,
-                Creator = ad.User.LastName,
-                Category = ad.Category.CategoryName,
-                CreationTime = ad.CreationDate,
-                ExpireTime = ad.ExpireDate
+        //    List<AdvertisementModel> Mylist = _db.Advertisements
+        //    .Where(adv => DateTime.Compare(DateTime.Now, adv.ExpireDate) <= 0)
+        //    .Select(ad => new AdvertisementModel
+        //    {
+        //        Id = ad.Id,
+        //        Title = ad.Title,
+        //        City = ad.City,
+        //        Region = ad.Region,
+        //        Address = ad.Address,
+        //        PhoneNumber = ad.PhoneNumber,
+        //        PictureLink =ad.PictureLink,
+        //        Description = ad.Description,
+        //        Creator = ad.User.LastName,
+        //        Category = ad.Category.CategoryName,
+        //        CreationTime = ad.CreationDate,
+        //        ExpireTime = ad.ExpireDate
 
-            }).ToList();
-            return Ok(Mylist);
-        }
+        //    }).ToList();
+        //    return Ok(Mylist);
+        //}
 
-        [HttpGet]
-        [Route("GetAdvertismentByCategory")]
-        public IActionResult GetAdvertismentByCategory(int categoryId)
-        {
+        //[HttpGet]
+        //[Route("GetAdvertismentByCategory")]
+        //public IActionResult GetAdvertismentByCategory(int categoryId)
+        //{
 
-            List<AdvertisementModel> Mylist = _db.Advertisements
-            .Where(adv => (adv.CategoryId == categoryId) && (DateTime.Compare(DateTime.Now, adv.ExpireDate) <= 0))
-            .Select(ad => new AdvertisementModel
-            {
-                Id = ad.Id,
-                Title = ad.Title,
-                City = ad.City,
-                Region = ad.Region,
-                Address = ad.Address,
-                PhoneNumber = ad.PhoneNumber,
-                Description = ad.Description,
-                Creator = ad.User.LastName,
-                Category = ad.Category.CategoryName,
-                CreationTime = ad.CreationDate,
-                ExpireTime = ad.ExpireDate
+        //    List<AdvertisementModel> Mylist = _db.Advertisements
+        //    .Where(adv => (adv.CategoryId == categoryId) && (DateTime.Compare(DateTime.Now, adv.ExpireDate) <= 0))
+        //    .Select(ad => new AdvertisementModel
+        //    {
+        //        Id = ad.Id,
+        //        Title = ad.Title,
+        //        City = ad.City,
+        //        Region = ad.Region,
+        //        Address = ad.Address,
+        //        PhoneNumber = ad.PhoneNumber,
+        //        Description = ad.Description,
+        //        Creator = ad.User.LastName,
+        //        Category = ad.Category.CategoryName,
+        //        CreationTime = ad.CreationDate,
+        //        ExpireTime = ad.ExpireDate
 
-            }).ToList();
-            return Ok(Mylist);
-        }
+        //    }).ToList();
+        //    return Ok(Mylist);
+        //}
 
         [HttpPost]
         [Route("createAdvertisment")]
@@ -125,18 +125,18 @@ namespace OnlineStockShop.Controllers
             return NotFound("Did not find the advertisement!"); 
         }
 
-        [HttpDelete]
-        [Route("DeleteAdvertisment")]
-        public IActionResult DeleteAdvertisment(int id)
-        {  
-            Advertisement toBeDeleted = _db.Advertisements.Where(ad => ad.Id == id).FirstOrDefault();  
-            if (toBeDeleted != null)  
-            {  
-                _db.Advertisements.Remove(toBeDeleted);  
-                _db.SaveChanges(); 
-                return Ok("Deleted the advertisement successfully"); 
-            }     
-            return NotFound("Did not find the advertisement!"); 
-        }
+        //[HttpDelete]
+        //[Route("DeleteAdvertisment")]
+        //public IActionResult DeleteAdvertisment(int id)
+        //{  
+        //    Advertisement toBeDeleted = _db.Advertisements.Where(ad => ad.Id == id).FirstOrDefault();  
+        //    if (toBeDeleted != null)  
+        //    {  
+        //        _db.Advertisements.Remove(toBeDeleted);  
+        //        _db.SaveChanges(); 
+        //        return Ok("Deleted the advertisement successfully"); 
+        //    }     
+        //    return NotFound("Did not find the advertisement!"); 
+        //}
     }
 }

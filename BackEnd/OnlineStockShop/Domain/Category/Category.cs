@@ -15,7 +15,7 @@ namespace OnlineStockShop.Domain.Category
             Advertisments = new HashSet<Advertisement>();
         }
         [Key]
-        public byte Id { get; set; }
+        public string Id { get; set; }
         public string CategoryName { get; set; }
 
         public virtual ICollection<Advertisement> Advertisments { get; set; }

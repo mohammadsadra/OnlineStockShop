@@ -22,16 +22,16 @@ namespace OnlineStockShop.Controllers
 
         }
 
-        [HttpGet]
-        [Route("GetCategories")]
-        public IActionResult GetCategories()
-        {
-            List<CategoryModel> Mylist = _db.Categories.Select(category => new CategoryModel
-            {
-                Id = category.Id,
-                CategoryName = category.CategoryName
-            }).ToList();
-            return Ok(Mylist);
-        }
+        //[HttpGet]
+        //[Route("GetCategories")]
+        //public IActionResult GetCategories()
+        //{
+        //    List<CategoryModel> Mylist = _db.Categories.Select(category => new CategoryModel
+        //    {
+        //        Id = category.Id,
+        //        CategoryName = category.CategoryName
+        //    }).ToList();
+        //    return Ok(Mylist);
+        //}
     }
 }

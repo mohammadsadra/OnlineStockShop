@@ -158,27 +158,9 @@ body::after {
   color: white;
 }
 
-//::ng-deep .mat-focused .mat-form-field-label {
-//  /*change color of label*/
-//  color: white !important;
-//}
-//
 ::ng-deep .mat-form-field-label {
   /*change color of label*/
   color: white !important;
   direction: rtl;
   text-align: right;
 }
-//
-//
-//::ng-deep .mat-datepicker-toggle {
-//  color: white !important;
-//}
-//
-//::ng-deep .mat-datepicker-content{
-//  color: white !important;
-//}
-//
-//::ng-deep .mat-datepicker{
-//  color: white !important;
-//}

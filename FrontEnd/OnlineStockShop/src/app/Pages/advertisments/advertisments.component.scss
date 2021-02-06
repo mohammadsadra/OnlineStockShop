@@ -76,7 +76,6 @@ body::after {
   display: none;
   padding: 20px;
   text-align: center;
-  //transform: translateY(100px);
   opacity: 0;
   transition: 0.5s;
 }
@@ -88,7 +87,6 @@ body::after {
 
 
 .container .card:hover .content{
-  //transform: translateY(0px);
   display: block;
   opacity: 1;
 }
@@ -164,7 +162,6 @@ body::after {
   border-width:0;
   color:gray;
   background-color:gray;
-  //margin-bottom: 2px;
 }
 
 .backOfCard{

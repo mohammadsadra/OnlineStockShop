@@ -155,14 +155,14 @@ export class ReportDialogPage implements OnInit {
       this.adData.id
     );
     this.reportService.creatReport(reportInfo).subscribe(res => {
-        this.openSnackBar('Successfully Created!', 'Done');
+        this.openSnackBar('با موفقیت ایجاد شد!', 'باشه');
         this.reportForm.reset();
       }, error => {
         if (error.message === 'Http failure during parsing for https://localhost:44365/Report/CreateReport') {
-          this.openSnackBar('Successfully Created!', 'Done');
+          this.openSnackBar('با موفقیت ایجاد شد!', 'باشه');
           this.reportForm.reset();
         } else {
-          this.openSnackBar('Try Again!', 'Done');
+          this.openSnackBar('با موفقیت ایجاد شد!', 'باشه');
         }
       }
     );

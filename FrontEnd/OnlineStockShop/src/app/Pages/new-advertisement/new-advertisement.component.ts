@@ -42,7 +42,6 @@ export class NewAdvertisementComponent implements OnInit {
       PictureLink: ['', Validators.required],
       PhoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       Price: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.max(1000000000)]],
-      // Days: ['', Validators.required]
     });
     this.getCategories();
   }
@@ -74,30 +73,19 @@ export class NewAdvertisementComponent implements OnInit {
       // tslint:disable-next-line:radix
       parseInt(this.newAdForm.controls.Price.value)
     );
-    // console.log(this.newAdForm.controls.Title.value);
-    // console.log(this.newAdForm.controls.City.value);
-    // console.log(this.newAdForm.controls.Region.value);
-    // console.log(this.newAdForm.controls.Category.value);
-    // console.log(this.newAdForm.controls.Status.value);
-    // console.log(this.newAdForm.controls.Address.value);
-    // console.log(this.newAdForm.controls.Description.value);
-    // console.log(this.newAdForm.controls.PictureLink.value);
-    // console.log(this.newAdForm.controls.PhoneNumber.value);
-    // tslint:disable-next-line:radix
-    console.log(parseInt(this.newAdForm.controls.Price.value));
-    // this.openSnackBar(this.newAdForm.controls.Status.value, this.newAdForm.controls.Category.value);
+
     this.advertismentService.postAd(adInfo).subscribe(res => {
-        this.openSnackBar('Successfully Created!', 'Done');
+        this.openSnackBar('با موفقیت ایجاد شد!', 'باشه');
         this.newAdForm.reset();
         this.adDate.reset();
       }, error => {
-      if (error.message === 'Http failure during parsing for https://localhost:44365/ToplearnShop/createAdvertisment') {
-        this.openSnackBar('Successfully Created!', 'Done');
-        this.newAdForm.reset();
-        this.adDate.reset();
-      } else {
-        this.openSnackBar('Try Again!', 'Done');
-      }
+        if (error.message === 'Http failure during parsing for https://localhost:44365/ToplearnShop/createAdvertisment') {
+          this.openSnackBar('با موفقیت ایجاد شد!', 'باشه');
+          this.newAdForm.reset();
+          this.adDate.reset();
+        } else {
+          this.openSnackBar('مشکلی رخ داده است!', 'باشه');
+        }
       }
     );
   }

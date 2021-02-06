@@ -17,6 +17,7 @@ export class AdvertismentsComponent implements OnInit {
   @Input() categoryId = '0';
 
   public result: Array<any> = [];
+  isZero = false;
 
   constructor(public dialog: MatDialog,
               // tslint:disable-next-line:no-shadowed-variable
@@ -61,11 +62,17 @@ export class AdvertismentsComponent implements OnInit {
   getAds(): void {
     this.AdvertismentService.getAdvertisment().subscribe(res => {
       this.result = res;
+      if (res.length === 0){
+        this.isZero = true;
+      }
     });
   }
   getAdsByID(id: any): void {
     this.AdvertismentService.getAdvertismentByCategory(id).subscribe(res => {
       this.result = res;
+      if (res.length === 0){
+        this.isZero = true;
+      }
     });
   }
 

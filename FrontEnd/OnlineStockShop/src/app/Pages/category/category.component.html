@@ -2,9 +2,12 @@
 
 <div class="card animated fadeIn">
 
-  <h3 class="colCategory" *ngFor="let item of category">
-    {{item.categoryName}}
-  </h3>
+  <div style="overflow-y: scroll">
+    <h3 class="colCategory" *ngFor="let item of category">
+      {{item.id}} {{item.categoryName}}
+    </h3>
+  </div>
+
 
 </div>
 </body>

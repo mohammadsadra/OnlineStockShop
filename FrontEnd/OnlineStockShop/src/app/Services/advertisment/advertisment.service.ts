@@ -14,6 +14,10 @@ export class AdvertismentService {
   getAdvertisment(): Observable<Array<any>> {
     return this.http.get<Array<any>>('https://localhost:44365/ToplearnShop/GetAdvertisment');
   }
+  // @ts-ignore
+  getAdvertismentByCategory(id): Observable<Array<any>> {
+    return this.http.get<Array<any>>('https://localhost:44365/ToplearnShop/GetAdvertismentByCategory?categoryId=' + id);
+  }
 
   postAd(ad: AdDTO): Observable<AdDTO> {
     return this.http.post<AdDTO>('https://localhost:44365/ToplearnShop/createAdvertisment', ad);

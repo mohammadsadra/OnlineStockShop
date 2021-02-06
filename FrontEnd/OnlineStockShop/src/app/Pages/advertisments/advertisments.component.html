@@ -1,42 +1,36 @@
-<body style="z-index: 100!important;">
-
+<body style="z-index: -1!important;">
+<div class="fadeIn animated" style="color: white; font-size: 4em; z-index: 1000" *ngIf="isZero">
+ آیتمی برای نمایش وجود ‌ندارد!
+</div>
 <div class="container animated fadeIn">
+
 
   <div class="card" *ngFor="let ad of result">
 
-    <div>
-      <h3 class="backOfCard">
-        {{ad.title}}
-      </h3>
-    </div>
+    <p class="backOfCard">
+      {{ad.title}}
+    </p>
 
-    <div class="content" style="margin-top: 3px">
+    <div class="content">
 
-      <h2>
+      <p>
         {{ad.category}}
-      </h2>
+      </p>
 
-      <h3>
+      <p style="opacity: 1!important;">
         {{ad.title}}
-      </h3>
+      </p>
 
-      <hr class="simpleLine">
-
-      <div *ngFor="let line of ad.description.split('\n')" class="description">
-        {{line}}
-        <div *ngIf="line == '' ">
-          <br>
-        </div>
-      </div>
 
       <a (click)="openDialog(ad)">
-       ادامه
+        ادامه
       </a>
       <div>
         <a style="background-color: #e91e63" (click)="openReportDialog(ad)">
           ثبت شکایت
         </a>
       </div>
+
     </div>
   </div>
 

@@ -40,7 +40,7 @@ body::after {
 }
 
 .container {
-  margin-top: 70px;
+  //margin-top: 70px;
   position: fixed;
   display: flex;
   top: 0;
@@ -53,6 +53,7 @@ body::after {
   flex-wrap: wrap;
   z-index: 1;
   overflow-y: scroll;
+  padding: 70px 70px 70px 70px;
 }
 
 .container .card {
@@ -72,39 +73,30 @@ body::after {
 }
 
 .container .card .content {
+  display: none;
   padding: 20px;
   text-align: center;
-  transform: translateY(100px);
+  //transform: translateY(100px);
   opacity: 0;
   transition: 0.5s;
-}
-.backOfCard{
-  display: inline;
-  font-size: 4em;
-  color: #fff;
-  margin-top: 100px;
-  margin-right: 15px;
-}
-.container .backOfCard{
-  transform: translateY(0px);
-  opacity: 1;
-  transition: 0.5s;
-}
-.container .card:hover .backOfCard{
-  transform: translateY(-100px);
-  opacity: 0;
 }
 
+.container .card .backOfCard {
+  padding: 20px;
+  text-align: center;
+}
+
+
 .container .card:hover .content{
-  transform: translateY(0px);
+  //transform: translateY(0px);
+  display: block;
   opacity: 1;
 }
 
 .container .card .content h2 {
   position: absolute;
-  top: -60px;
-  right: 35px;
-  font-size: 3.5em;
+  text-align: center;
+  font-size: 2em;
   color: rgba(255, 255, 255, 0.05);
   pointer-events: none;
 }
@@ -116,9 +108,11 @@ body::after {
 }
 
 .container .card .content p {
-  font-size: 1em;
+  font-size: 1.5em;
   color: #fff;
   font-weight: 300;
+  border-bottom: #f5f6fa solid 1px;
+  padding: 10px 30px 10px 30px;
 }
 
 .container .card .content a {
@@ -170,5 +164,23 @@ body::after {
   border-width:0;
   color:gray;
   background-color:gray;
-  margin-bottom: 2px;
+  //margin-bottom: 2px;
+}
+
+.backOfCard{
+  text-align: center;
+  font-size: 1.5em;
+  color: #fff;
+  font-weight: 300;
+  padding: 10px 30px 10px 30px;
+}
+.container .backOfCard{
+  transform: translateY(0px);
+  opacity: 1;
+  transition: 0.5s;
+}
+.container .card:hover .backOfCard{
+  transform: translateY(-100px);
+  opacity: 0;
+  display: none;
 }

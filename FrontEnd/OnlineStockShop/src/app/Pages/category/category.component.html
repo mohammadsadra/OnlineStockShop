@@ -1,1 +1,14 @@
-<p>category works!</p>
+<body *ngIf="!isSelected">
+
+<div class="card animated fadeIn">
+
+  <div style="overflow-y: scroll">
+    <h3 class="colCategory" *ngFor="let item of category" (click)="selectCategory(item.id)">
+      {{item.categoryName}}
+    </h3>
+  </div>
+
+
+</div>
+</body>
+<app-advertisments [categoryId]="selectedID" *ngIf="isSelected"></app-advertisments>

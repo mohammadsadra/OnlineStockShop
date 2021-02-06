@@ -22,6 +22,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { CategoryComponent } from './Pages/category/category.component';
+import { PageNotFoundComponent } from './Pages/page-not-found/page-not-found.component';
 
 
 
@@ -35,7 +36,8 @@ import { CategoryComponent } from './Pages/category/category.component';
     DialogContentExampleDialog,
     NewAdvertisementComponent,
     ReportDialogPage,
-    CategoryComponent
+    CategoryComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

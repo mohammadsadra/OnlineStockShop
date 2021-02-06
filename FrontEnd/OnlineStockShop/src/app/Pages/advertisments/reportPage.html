@@ -14,12 +14,18 @@
         <mat-form-field class="example-full-width" style="text-align: right">
           <input matInput placeholder="عنوان" style="text-align: right" formControlName="Title">
         </mat-form-field>
+        <p style="color: red !important;" class="mat-error"
+           *ngIf="reportForm.controls.Title.errors?.required && reportForm.controls.Title.touched">
+          لطفا عنوان تخلف را وارد کنید</p>
       </h3>
 
       <h3>
         <mat-form-field class="example-full-width" style="text-align: right">
           <textarea matInput placeholder="توضیحات" style="text-align: right" formControlName="Description"></textarea>
         </mat-form-field>
+        <p style="color: red !important;" class="mat-error"
+           *ngIf="reportForm.controls.Description.errors?.required && reportForm.controls.Description.touched">
+          لطفا گزارش تخلف را وارد کنید</p>
       </h3>
     </form>
     <div class="example-button-row">

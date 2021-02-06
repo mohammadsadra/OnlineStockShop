@@ -1,0 +1,29 @@
+<div class="card">
+
+  <img
+    src="https://lh3.googleusercontent.com/proxy/vujLaS7Zsivp0w34XL5oeDKNzYljujBO-daimLdDEG0yyrHjHoacE99FiXOMNbR7uOBjhlLlijpNIru4EG7JFX7N_Vx_9TljZQ8Ss0LSXzM"
+    class="user_img">
+  <div class="content">
+<!--    <h3>-->
+<!--      ثبت شکایت-->
+<!--    </h3>-->
+
+<!--    <hr class="simpleLine">-->
+    <form class="example-form" [formGroup]="reportForm" [style.fontSize.px]='12'>
+      <h3>
+        <mat-form-field class="example-full-width" style="text-align: right">
+          <input matInput placeholder="عنوان" style="text-align: right" formControlName="Title">
+        </mat-form-field>
+      </h3>
+
+      <h3>
+        <mat-form-field class="example-full-width" style="text-align: right">
+          <textarea matInput placeholder="توضیحات" style="text-align: right" formControlName="Description"></textarea>
+        </mat-form-field>
+      </h3>
+    </form>
+  </div>
+</div>
+
+
+

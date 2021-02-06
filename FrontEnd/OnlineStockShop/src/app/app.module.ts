@@ -7,7 +7,7 @@ import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import {ModalModule} from 'ngx-bootstrap/modal';
 import {HomeComponent} from './Pages/home/home.component';
-import {AdvertismentsComponent, DialogContentExampleDialog} from './Pages/advertisments/advertisments.component';
+import {AdvertismentsComponent, DialogContentExampleDialog, ReportDialogPage} from './Pages/advertisments/advertisments.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
 import {HttpClientModule} from '@angular/common/http';
@@ -32,7 +32,8 @@ import {MatSelectModule} from '@angular/material/select';
     HomeComponent,
     AdvertismentsComponent,
     DialogContentExampleDialog,
-    NewAdvertisementComponent
+    NewAdvertisementComponent,
+    ReportDialogPage
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {AdvertismentService} from 'src/app/Services/advertisment/advertisment.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 
 @Component({
@@ -24,6 +25,18 @@ export class AdvertismentsComponent implements OnInit {
 
   openDialog(ad: Array<any>): void {
     const dialogRef = this.dialog.open(DialogContentExampleDialog, {
+      data: {
+        dataKey: ad
+      },
+      backdropClass: 'backdropBackground',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  openReportDialog(ad: Array<any>): void {
+    const dialogRef = this.dialog.open(ReportDialogPage, {
       data: {
         dataKey: ad
       },
@@ -63,6 +76,46 @@ export class DialogContentExampleDialog implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  // tslint:disable-next-line:typedef
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
+
+}
+
+//// REPORT ////
+
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'dialog-content-example-dialog',
+  templateUrl: 'reportPage.html',
+  styleUrls: ['./reportPageStyle.scss'],
+})
+
+// tslint:disable-next-line:component-class-suffix
+export class ReportDialogPage implements OnInit {
+  adData;
+  // @ts-ignore
+  reportForm: FormGroup;
+
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+              // tslint:disable-next-line:variable-name
+              private _snackBar: MatSnackBar,
+              // tslint:disable-next-line:variable-name
+              private _formBuilder: FormBuilder) {
+    this.adData = this.data.dataKey;
+  }
+
+  ngOnInit(): void {
+    this.reportForm = this._formBuilder.group({
+      Title: ['', Validators.required],
+      Description: ['', Validators.required]
+    });
   }
 
   // tslint:disable-next-line:typedef

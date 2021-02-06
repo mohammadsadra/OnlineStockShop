@@ -3,11 +3,11 @@
   font-weight: 500;
   direction: rtl;
 }
- .card {
-   background-color: #161623;
+.card {
+  background-color: #161623;
   position: relative;
   max-width: 480px;
-   min-height: 400px;
+  min-height: 400px;
   max-height: 600px;
   //margin: 30px;
   z-index: 500;
@@ -30,7 +30,7 @@
   border-radius: 15px;
 }
 
- .card .content h2 {
+.card .content h2 {
   position: absolute;
   top: 40px;
   right: 20px;
@@ -63,4 +63,49 @@
   border-width:0;
   color:gray;
   background-color:gray;
+}
+::ng-deep .mat-form-field-label {
+  /*change color of label*/
+  color: white !important;
+  direction: rtl;
+  text-align: right;
+}
+::ng-deep .mat-select-value{
+  color: white;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+::ng-deep .mat-form-field-placeholder{
+
+  color:white;
+}
+
+::ng-deep .mat-focused .mat-form-field-placeholder{
+
+  color:white;
+}
+::ng-deep .mat-form-field-underline .mat-form-field-ripple{
+
+  background-color:white;
+}
+
+::ng-deep .mat-form-field-underline{
+
+  background-color:white;
+}
+::ng-deep .mat-form-field-underline, ::ng-deep .mat-form-field-ripple {
+  background-color: white !important;
+  color: white !important
+}
+
+::ng-deep .mat-form-field-empty.mat-form-field-label {
+  color: white;
 }

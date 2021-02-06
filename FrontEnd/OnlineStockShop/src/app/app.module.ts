@@ -37,7 +37,7 @@ import { PageNotFoundComponent } from './Pages/page-not-found/page-not-found.com
     NewAdvertisementComponent,
     ReportDialogPage,
     CategoryComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

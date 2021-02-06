@@ -9,6 +9,9 @@ import {CategoryService} from '../../Services/Category/category.service';
 export class CategoryComponent implements OnInit {
 
   public category: Array<any> = [];
+  // @ts-ignore
+  selectedID;
+  isSelected = false;
   constructor(private categoryService: CategoryService) { }
 
   ngOnInit(): void {
@@ -18,6 +21,10 @@ export class CategoryComponent implements OnInit {
     this.categoryService.getCategories().subscribe(res => {
       this.category = res;
     });
+  }
+  selectCategory(id: any): void{
+    this.selectedID = id;
+    this.isSelected = true;
   }
 
 }

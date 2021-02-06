@@ -1,11 +1,10 @@
-import {Inject} from '@angular/core';
+import {Inject, Input} from '@angular/core';
 import {Component, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {AdvertismentService} from 'src/app/Services/advertisment/advertisment.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ReportService} from '../../Services/Report/report.service';
-import {AdDTO} from '../../DTOs/AdDTO';
 import {ReportDTO} from '../../DTOs/ReportDTO';
 
 
@@ -15,6 +14,8 @@ import {ReportDTO} from '../../DTOs/ReportDTO';
   styleUrls: ['./advertisments.component.scss']
 })
 export class AdvertismentsComponent implements OnInit {
+  @Input() categoryId = '0';
+
   public result: Array<any> = [];
 
   constructor(public dialog: MatDialog,
@@ -23,7 +24,13 @@ export class AdvertismentsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAds();
+    if (this.categoryId === '0'){
+      this.getAds();
+    }
+    else {
+      this.getAdsByID(this.categoryId);
+    }
+
   }
 
   openDialog(ad: Array<any>): void {
@@ -53,6 +60,11 @@ export class AdvertismentsComponent implements OnInit {
 
   getAds(): void {
     this.AdvertismentService.getAdvertisment().subscribe(res => {
+      this.result = res;
+    });
+  }
+  getAdsByID(id: any): void {
+    this.AdvertismentService.getAdvertismentByCategory(id).subscribe(res => {
       this.result = res;
     });
   }

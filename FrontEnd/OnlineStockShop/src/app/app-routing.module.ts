@@ -4,7 +4,7 @@ import {HomeComponent} from './Pages/home/home.component';
 import {AdvertismentsComponent} from './Pages/advertisments/advertisments.component';
 import {NewAdvertisementComponent} from './Pages/new-advertisement/new-advertisement.component';
 import {CategoryComponent} from './Pages/category/category.component';
-import {PageNotFoundComponent} from "./Pages/page-not-found/page-not-found.component";
+import {PageNotFoundComponent} from './Pages/page-not-found/page-not-found.component';
 
 
 const routes: Routes = [

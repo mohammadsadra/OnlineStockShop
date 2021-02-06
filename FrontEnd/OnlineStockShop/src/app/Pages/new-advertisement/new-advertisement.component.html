@@ -126,7 +126,7 @@
           </mat-form-field>
         <div class="example-button-row">
           <button [disabled]="newAdForm.invalid" mat-raised-button color="primary" style="margin: 5px; width: 80px" (click)="postAd()">ثبت</button>
-          <button [disabled]="newAdForm.invalid" mat-raised-button color="accent" style="margin: 5px;width: 80px" (click)="newAdForm.reset(); adDate.reset()">پاک کردن</button>
+          <button mat-raised-button color="accent" style="margin: 5px;width: 80px" (click)="newAdForm.reset(); adDate.reset()">پاک کردن</button>
         </div>
 
       </form>

@@ -22,6 +22,10 @@
         </mat-form-field>
       </h3>
     </form>
+    <div class="example-button-row">
+      <button [disabled]="reportForm.invalid" mat-raised-button color="primary" style="margin: 5px; width: 80px" (click)="creatReport()">ثبت</button>
+      <button mat-raised-button color="accent" style="margin: 5px;width: 80px" (click)="reportForm.reset()">پاک کردن</button>
+    </div>
   </div>
 </div>
 

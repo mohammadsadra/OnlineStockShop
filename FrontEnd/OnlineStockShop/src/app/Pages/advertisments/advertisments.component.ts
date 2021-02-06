@@ -4,6 +4,9 @@ import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {AdvertismentService} from 'src/app/Services/advertisment/advertisment.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ReportService} from '../../Services/Report/report.service';
+import {AdDTO} from '../../DTOs/AdDTO';
+import {ReportDTO} from '../../DTOs/ReportDTO';
 
 
 @Component({
@@ -107,7 +110,8 @@ export class ReportDialogPage implements OnInit {
               // tslint:disable-next-line:variable-name
               private _snackBar: MatSnackBar,
               // tslint:disable-next-line:variable-name
-              private _formBuilder: FormBuilder) {
+              private _formBuilder: FormBuilder,
+              private reportService: ReportService) {
     this.adData = this.data.dataKey;
   }
 
@@ -123,6 +127,22 @@ export class ReportDialogPage implements OnInit {
     this._snackBar.open(message, action, {
       duration: 2000,
     });
+  }
+  creatReport(): void{
+    const reportInfo = new ReportDTO(
+      this.reportForm.controls.Title.value,
+      this.reportForm.controls.Description.value,
+      this.adData.id
+    );
+    this.reportService.creatReport(reportInfo).subscribe(res => {
+        this.openSnackBar('Successfully Created!', 'Done');
+        // this.newAdForm.reset();
+        // this.adDate.reset();
+      }, error => {
+        this.openSnackBar('Try Again!', 'Done');
+        console.log(error.message);
+      }
+    );
   }
 
 }

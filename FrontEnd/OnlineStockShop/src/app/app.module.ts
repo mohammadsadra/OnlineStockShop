@@ -21,6 +21,7 @@ import { NewAdvertisementComponent } from './Pages/new-advertisement/new-adverti
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import { CategoryComponent } from './Pages/category/category.component';
 
 
 
@@ -33,7 +34,8 @@ import {MatSelectModule} from '@angular/material/select';
     AdvertismentsComponent,
     DialogContentExampleDialog,
     NewAdvertisementComponent,
-    ReportDialogPage
+    ReportDialogPage,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

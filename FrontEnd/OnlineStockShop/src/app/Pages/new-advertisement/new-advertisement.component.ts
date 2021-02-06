@@ -88,11 +88,16 @@ export class NewAdvertisementComponent implements OnInit {
     // this.openSnackBar(this.newAdForm.controls.Status.value, this.newAdForm.controls.Category.value);
     this.advertismentService.postAd(adInfo).subscribe(res => {
         this.openSnackBar('Successfully Created!', 'Done');
-        // this.newAdForm.reset();
-        // this.adDate.reset();
+        this.newAdForm.reset();
+        this.adDate.reset();
       }, error => {
+      if (error.message === 'Http failure during parsing for https://localhost:44365/ToplearnShop/createAdvertisment') {
+        this.openSnackBar('Successfully Created!', 'Done');
+        this.newAdForm.reset();
+        this.adDate.reset();
+      } else {
         this.openSnackBar('Try Again!', 'Done');
-        console.log(error.message);
+      }
       }
     );
   }

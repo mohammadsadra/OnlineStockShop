@@ -25,10 +25,9 @@ export class AdvertismentsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.categoryId === '0'){
+    if (this.categoryId === '0') {
       this.getAds();
-    }
-    else {
+    } else {
       this.getAdsByID(this.categoryId);
     }
 
@@ -62,15 +61,16 @@ export class AdvertismentsComponent implements OnInit {
   getAds(): void {
     this.AdvertismentService.getAdvertisment().subscribe(res => {
       this.result = res;
-      if (res.length === 0){
+      if (res.length === 0) {
         this.isZero = true;
       }
     });
   }
+
   getAdsByID(id: any): void {
     this.AdvertismentService.getAdvertismentByCategory(id).subscribe(res => {
       this.result = res;
-      if (res.length === 0){
+      if (res.length === 0) {
         this.isZero = true;
       }
     });
@@ -147,7 +147,8 @@ export class ReportDialogPage implements OnInit {
       duration: 2000,
     });
   }
-  creatReport(): void{
+
+  creatReport(): void {
     const reportInfo = new ReportDTO(
       this.reportForm.controls.Title.value,
       this.reportForm.controls.Description.value,
@@ -155,11 +156,14 @@ export class ReportDialogPage implements OnInit {
     );
     this.reportService.creatReport(reportInfo).subscribe(res => {
         this.openSnackBar('Successfully Created!', 'Done');
-        // this.newAdForm.reset();
-        // this.adDate.reset();
+        this.reportForm.reset();
       }, error => {
-        this.openSnackBar('Try Again!', 'Done');
-        console.log(error.message);
+        if (error.message === 'Http failure during parsing for https://localhost:44365/Report/CreateReport') {
+          this.openSnackBar('Successfully Created!', 'Done');
+          this.reportForm.reset();
+        } else {
+          this.openSnackBar('Try Again!', 'Done');
+        }
       }
     );
   }

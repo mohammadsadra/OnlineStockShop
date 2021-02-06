@@ -40,8 +40,8 @@ export class NewAdvertisementComponent implements OnInit {
       Address: ['', Validators.required],
       Description: ['', Validators.required],
       PictureLink: ['', Validators.required],
-      PhoneNumber: ['', Validators.required],
-      Price: ['', Validators.required],
+      PhoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      Price: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.max(1000000000)]],
       Days: ['', Validators.required]
     });
     this.getCategories();
@@ -91,8 +91,8 @@ export class NewAdvertisementComponent implements OnInit {
         // this.newAdForm.reset();
         // this.adDate.reset();
       }, error => {
-      this.openSnackBar('Try Again!', 'Done');
-      console.log(error.message);
+        this.openSnackBar('Try Again!', 'Done');
+        console.log(error.message);
       }
     );
   }

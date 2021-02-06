@@ -12,12 +12,24 @@
           <mat-form-field class="example-full-width" style="text-align: right;">
             <input matInput placeholder="نام محصول" style="text-align: right" formControlName="Title">
           </mat-form-field>
+          <p style="color: red !important;" class="mat-error"
+             *ngIf="newAdForm.controls.Title.errors?.required && newAdForm.controls.Title.touched">
+            لطفا عنوان آگهی را وارد کنید</p>
         </h3>
 
         <h3>
           <mat-form-field class="example-full-width" style="text-align: right;">
             <input matInput placeholder="قیمت" style="text-align: right" formControlName="Price">
           </mat-form-field>
+          <p style="color: red !important;" class="mat-error"
+             *ngIf="newAdForm.controls.Price.errors?.required && newAdForm.controls.Price.touched">
+            لطفا قیمت را وارد کنید</p>
+          <p style="color: red !important;" class="mat-error"
+             *ngIf="newAdForm.controls.Price.errors?.pattern && newAdForm.controls.Price.touched">
+            لطفا عدد وارد کنید</p>
+          <p style="color: red !important;" class="mat-error"
+             *ngIf="newAdForm.controls.Price.errors?.max && newAdForm.controls.Price.touched">
+            مقدار مجاز وارد کنید</p>
         </h3>
 
 
@@ -46,24 +58,36 @@
           <mat-form-field class="example-full-width" style="text-align: right">
             <input matInput placeholder="شهر" style="text-align: right" formControlName="City">
           </mat-form-field>
+          <p style="color: red !important;" class="mat-error"
+             *ngIf="newAdForm.controls.City.errors?.required && newAdForm.controls.City.touched">
+            لطفا شهر را وارد کنید</p>
         </h3>
 
         <h3>
           <mat-form-field class="example-full-width" style="text-align: right">
             <input matInput placeholder="ناحیه" style="text-align: right" formControlName="Region">
           </mat-form-field>
+          <p style="color: red !important;" class="mat-error"
+             *ngIf="newAdForm.controls.Region.errors?.required && newAdForm.controls.Region.touched">
+            لطفا منطقه را وارد کنید</p>
         </h3>
 
         <h3>
           <mat-form-field class="example-full-width" style="text-align: right">
             <textarea matInput placeholder="آدرس" style="text-align: right" formControlName="Address"></textarea>
           </mat-form-field>
+          <p style="color: red !important;" class="mat-error"
+             *ngIf="newAdForm.controls.Address.errors?.required && newAdForm.controls.Address.touched">
+            لطفا آدرس را وارد کنید</p>
         </h3>
 
         <h3>
           <mat-form-field class="example-full-width" style="text-align: right">
             <textarea matInput placeholder="توضیحات" style="text-align: right" formControlName="Description"></textarea>
           </mat-form-field>
+          <p style="color: red !important;" class="mat-error"
+             *ngIf="newAdForm.controls.Description.errors?.required && newAdForm.controls.Description.touched">
+            لطفا توضیحات را وارد کنید</p>
         </h3>
 
 
@@ -71,12 +95,21 @@
           <mat-form-field class="example-full-width" style="text-align: right">
             <input matInput placeholder="شماره تماس" style="text-align: right" formControlName="PhoneNumber">
           </mat-form-field>
+          <p style="color: red !important;" class="mat-error"
+             *ngIf="newAdForm.controls.PhoneNumber.errors?.required && newAdForm.controls.PhoneNumber.touched">
+            لطفا اطلاعات تماس را وارد کنید</p>
+          <p style="color: red !important;" class="mat-error"
+             *ngIf="newAdForm.controls.PhoneNumber.errors?.pattern && newAdForm.controls.PhoneNumber.touched">
+            لطفا مقدار مجاز را وارد کنید</p>
         </h3>
 
         <h3>
           <mat-form-field class="example-full-width" style="text-align: right">
             <input matInput placeholder="لینک تصویر" style="text-align: right" formControlName="PictureLink">
           </mat-form-field>
+          <p style="color: red !important;" class="mat-error"
+             *ngIf="newAdForm.controls.PictureLink.errors?.required && newAdForm.controls.PictureLink.touched">
+            لطفا لینک تصویر را وارد کنید</p>
         </h3>
 
           <mat-form-field appearance="fill" [style.fontSize.px]='14' style="color: whitesmoke!important;">
@@ -91,7 +124,6 @@
             <mat-error *ngIf="adDate.controls.start.hasError('matStartDateInvalid')">تاریخ شروع نامعتبر است</mat-error>
             <mat-error *ngIf="adDate.controls.end.hasError('matEndDateInvalid')">تاریخ پایان نامعتبر است</mat-error>
           </mat-form-field>
-
         <div class="example-button-row">
           <button mat-raised-button color="primary" style="margin: 5px; width: 80px" (click)="postAd()">ثبت</button>
           <button mat-raised-button color="accent" style="margin: 5px;width: 80px" (click)="newAdForm.reset(); adDate.reset()">پاک کردن</button>

@@ -12,7 +12,7 @@ body {
   align-items: center;
   min-height: 100vh;
   background-color: #161623;
-  overflow: hidden;
+  overflow-y: scroll;
 }
 
 body::before {
@@ -24,7 +24,7 @@ body::before {
   height: 100%;
   background: linear-gradient(#f00, #f0f);
   clip-path: circle(30% at right 70%);
-  overflow: hidden;
+  overflow-y: scroll;
 }
 
 body::after {
@@ -36,7 +36,7 @@ body::after {
   height: 100%;
   background: linear-gradient(#2196f3, #e91e63);
   clip-path: circle(20% at 10% 10%);
-  overflow: hidden;
+  overflow-y: scroll;
 }
 
 .container {
@@ -133,12 +133,12 @@ body::after {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2 );
   cursor: pointer;
 }
+
 .container .card .content a:hover{
-  color: #7436f3;
+  color: #d4d9dc;
 }
-.container .card .content .reportBtn :hover{
-  color: #ffffff !important;
-}
+
+
 .animated {
   -webkit-animation-duration: 3s;
   animation-duration: 3s;

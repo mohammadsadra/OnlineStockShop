@@ -24,12 +24,10 @@ export class AdvertismentsComponent implements OnInit {
 
   openDialog(ad: Array<any>): void {
     const dialogRef = this.dialog.open(DialogContentExampleDialog, {
-      minWidth: '600px',
-      minHeight: '400px',
       data: {
         dataKey: ad
       },
-      // backdropClass: 'backdropBackground',
+      backdropClass: 'backdropBackground',
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

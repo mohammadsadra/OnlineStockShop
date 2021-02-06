@@ -20,6 +20,11 @@ div{
 .hover-header:hover{
   background-color: #1d2129;
 }
-//.backdropBackground{
-//  background-color: #2196f3;
-//}
+.backdropBackground{
+  overflow-y: scroll !important;
+}
+.mat-dialog-container{
+  background-color: transparent !important;
+  padding: 0 !important;
+  max-width: 480px !important;
+}

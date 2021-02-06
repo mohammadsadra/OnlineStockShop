@@ -42,7 +42,7 @@ export class NewAdvertisementComponent implements OnInit {
       PictureLink: ['', Validators.required],
       PhoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       Price: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.max(1000000000)]],
-      Days: ['', Validators.required]
+      // Days: ['', Validators.required]
     });
     this.getCategories();
   }
